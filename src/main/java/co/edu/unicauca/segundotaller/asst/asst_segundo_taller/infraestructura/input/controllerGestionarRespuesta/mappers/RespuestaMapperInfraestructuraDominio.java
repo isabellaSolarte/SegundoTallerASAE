@@ -1,5 +1,5 @@
-package co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.input.controllerGestionarCuestionarioRespuesta.mappers;
+package co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.input.controllerGestionarRespuesta.mappers;
 
-public class CuestionarioRespuestaMapperInfraestructuraDominio {
+public class RespuestaMapperInfraestructuraDominio {
     
 }
