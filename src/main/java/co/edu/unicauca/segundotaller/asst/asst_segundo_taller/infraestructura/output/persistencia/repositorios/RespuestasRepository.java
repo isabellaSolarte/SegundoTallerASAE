@@ -4,8 +4,8 @@ package co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.o
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.output.persistencia.entities.Respuesta;
+import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.output.persistencia.entities.RespuestaEntity;
 
 @Repository
-public interface RespuestasRepository extends CrudRepository<Respuesta, Integer> {
+public interface RespuestasRepository extends CrudRepository<RespuestaEntity, Integer> {
 }

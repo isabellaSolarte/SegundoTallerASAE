@@ -13,7 +13,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "Respuesta")
-public class Respuesta {
+public class RespuestaEntity {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,11 +24,11 @@ public class Respuesta {
     
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idPregunta", nullable = false)
-    private Pregunta objPregunta;
+    private PreguntaEntity objPregunta;
 
     @ManyToOne
     @JoinColumn(name = "idDocente", nullable = false)
-    private Docente objDocente;
+    private DocenteEntity objDocente;
 
 
 }

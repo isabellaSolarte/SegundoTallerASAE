@@ -20,7 +20,7 @@ import jakarta.persistence.Table;
 @AllArgsConstructor
 @Table(name = "Cuestionarios")
 
-public class Cuestionario {
+public class CuestionarioEntity {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,8 +33,8 @@ public class Cuestionario {
     private String descripcion;
 
     @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, fetch = FetchType.EAGER, mappedBy = "objCuestionario")
-    private List<Pregunta> preguntas;
-    public Cuestionario(){
+    private List<PreguntaEntity> preguntas;
+    public CuestionarioEntity(){
         this.preguntas = new ArrayList<>();
     }
 

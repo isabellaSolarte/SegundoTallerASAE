@@ -13,7 +13,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "Telefono")
-public class Telefono {
+public class TelefonoEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,6 +27,6 @@ public class Telefono {
 
     @OneToOne
     @JoinColumn(name="idDocente")
-    private Docente objDocente;
+    private DocenteEntity objDocente;
     
 }

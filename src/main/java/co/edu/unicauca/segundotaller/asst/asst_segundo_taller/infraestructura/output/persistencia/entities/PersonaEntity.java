@@ -14,7 +14,7 @@ import lombok.*;
 @NoArgsConstructor
 @Table(name = "Personas")
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Persona {
+public class PersonaEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

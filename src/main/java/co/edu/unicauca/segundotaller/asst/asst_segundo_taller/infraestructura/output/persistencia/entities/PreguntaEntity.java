@@ -13,7 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 
 @Table(name = "Preguntas")
-public class Pregunta {
+public class PreguntaEntity {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,16 +23,16 @@ public class Pregunta {
     private String enunciado;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "objPregunta")
-	private List<Respuesta> respuestas;
+	private List<RespuestaEntity> respuestas;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="idTipoPregunta", nullable = false)
-    private TipoPregunta objTipoPregunta;
+    private TipoPreguntaEntity objTipoPregunta;
 
     @ManyToOne
     @JoinColumn(name = "idCuestionario", nullable = false)
-    private Cuestionario objCuestionario;
-    public Pregunta (){
+    private CuestionarioEntity objCuestionario;
+    public PreguntaEntity (){
         this.respuestas = new ArrayList<>();
     }
 

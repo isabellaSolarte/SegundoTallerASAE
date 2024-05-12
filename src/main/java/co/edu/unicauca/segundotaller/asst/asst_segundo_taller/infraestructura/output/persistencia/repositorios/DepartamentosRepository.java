@@ -5,9 +5,9 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 
-import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.output.persistencia.entities.Departamento;
+import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.output.persistencia.entities.DepartamentoEntity;
 
 @Repository
-public interface DepartamentosRepository extends CrudRepository<Departamento, Integer> {
+public interface DepartamentosRepository extends CrudRepository<DepartamentoEntity, Integer> {
 
 }
