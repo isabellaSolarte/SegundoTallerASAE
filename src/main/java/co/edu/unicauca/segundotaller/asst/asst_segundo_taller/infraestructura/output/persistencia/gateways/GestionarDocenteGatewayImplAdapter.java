@@ -22,13 +22,11 @@ public class GestionarDocenteGatewayImplAdapter implements GestionarDocenteGatew
         this.docenteModelMapper = docModelMapper;
     }
 
-    @Override
-    public boolean existeUsuarioPorCodigo(Integer codigo) {
-        return this.objDocenteRepository.existeUsuarioPorCodigo(codigo) == 1;
-    }
+  
 
     @Override
-    public Docente guardar(Docente objDocente) {
+    public Docente guardar(Docente objDocente) 
+    {
         DocenteEntity objDocenteEntity = this.docenteModelMapper.map(objDocente, DocenteEntity.class);
         DocenteEntity objDocenteEntityRegistrado = this.objDocenteRepository.save(objDocenteEntity);
         Docente objDocenteRespuesta = this.docenteModelMapper.map(objDocenteEntityRegistrado, Docente.class);
@@ -36,11 +34,24 @@ public class GestionarDocenteGatewayImplAdapter implements GestionarDocenteGatew
     }
 
     @Override
-    public List<Docente> listar() {
+    public List<Docente> listar() 
+    {
         Iterable<DocenteEntity> lista = this.objDocenteRepository.findAll();
         List<Docente> listaObtenida = this.docenteModelMapper.map(lista, new TypeToken<List<Docente>>() {
         }.getType());
         return listaObtenida;
+    }
+
+    @Override
+    public boolean existeUsuarioPorId(Integer id) 
+    {
+        return this.objDocenteRepository.existeUsuarioPorId(id) == 1;
+    }
+
+    @Override
+    public boolean existeUsuarioPorCodigo(String id)
+    {
+        return this.objDocenteRepository.existeUsuarioPorCodigo(id) == 1;
     }
     
 }
