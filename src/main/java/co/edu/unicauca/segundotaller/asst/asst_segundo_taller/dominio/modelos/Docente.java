@@ -20,10 +20,10 @@ public class Docente extends Persona
         this.listaDepartamentos = new ArrayList<>();
     }
 
-    public Docente(Integer id, String tipoId, String numeroId, String nombres,
+    public Docente(Integer idpersona, String tipoidentificacion, String numeroidentificacion, String nombres,
                      String apellidos, String correo, String vinculacion, Telefono objTelefono)
     {
-        super(id, tipoId, numeroId, nombres, apellidos);
+        super(idpersona, tipoidentificacion, numeroidentificacion, nombres, apellidos);
         this.respuestas = new ArrayList<>();
         this.listaDepartamentos = new ArrayList<>();
     }

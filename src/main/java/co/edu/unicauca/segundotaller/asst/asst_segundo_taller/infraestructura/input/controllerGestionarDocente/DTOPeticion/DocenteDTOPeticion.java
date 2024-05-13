@@ -4,6 +4,7 @@ package co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.i
 
 import java.util.List;
 
+import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.input.controllerGestionarRespuesta.DTOPeticion.RespuestaDTOPeticion;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
@@ -17,11 +18,11 @@ import lombok.Setter;
 public class DocenteDTOPeticion 
 {
     @NotNull(message = "{docente.iddocente.emply}")
-    private int iddocente;
+    private int idpersona;
 
     @NotNull(message = "{docente.tipoidentificacion.emply}")
     @Size(min = 5, max = 45, message = "{docente.tipoidentificacion.size}")
-    private String tipoIdentificacion;
+    private String tipoidentificacion;
 
     @NotNull(message = "{docente.numeroidentificacion.emply}")
     @Size(min = 1, max = 10, message = "{docente.numeroidentificacion.size}")
@@ -39,15 +40,17 @@ public class DocenteDTOPeticion
     @Size(min = 30, max = 30, message = "{docente.correo.size}")
     private String correo;
 
+    private List<RespuestaDTOPeticion> respuestas;
+
     @NotNull(message = "{docente.vinculacion.emply}")
     @Size(min = 7, max = 30, message = "{docente.vinculacion.size}")
     private String vinculacion;
 
     @Pattern(regexp = "(?:3[0-9]{9})|(?:[1-9][0-9]{8})", message = "{telefono.size.pattern}")
-    private TelefonoDTOPeticion objPeticionTel;
+    private TelefonoDTOPeticion objTelefono;
 
     @NotNull(message = "")
-    private List<Integer> departamentos;
+    private List<DepartamentoDTOPeticion> listaDepartamentos;
 
     public DocenteDTOPeticion()
     {

@@ -2,6 +2,7 @@ package co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.i
 
 import java.util.List;
 
+import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.input.controllerGestionarRespuesta.DTOPeticion.RespuestaDTOPeticion;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
@@ -16,7 +17,7 @@ import lombok.Setter;
 public class DocenteDTORespuesta 
 {
     @NotNull(message = "{docente.iddocente.emply}")
-    private int iddocente;
+    private int idpersona;
 
     @NotNull(message = "{docente.tipoidentificacion.emply}")
     @Size(min = 5, max = 45, message = "{docente.tipoidentificacion.size}")
@@ -43,9 +44,10 @@ public class DocenteDTORespuesta
     private String vinculacion;
 
     @Pattern(regexp = "(?:3[0-9]{9})|(?:[1-9][0-9]{8})", message = "{telefono.size.pattern}")
-    private TelefonoDTORespuesta objPeticionTel;
+    private TelefonoDTORespuesta objTelefono;
+    private List<RespuestaDTOPeticion> respuestas;
 
     @NotNull(message = "")
-    private List<DepartamentoDTORespuesta> departamentos;
+    private List<DepartamentoDTORespuesta> listaDepartamentos;
     
 }
