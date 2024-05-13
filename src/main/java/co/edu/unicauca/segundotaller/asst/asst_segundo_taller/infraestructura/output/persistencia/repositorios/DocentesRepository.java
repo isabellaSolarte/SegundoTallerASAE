@@ -8,7 +8,7 @@ import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.ou
 
 public interface DocentesRepository extends CrudRepository<DocenteEntity, Integer> 
 {
-    @Query("SELECT count(*) FROM DocenteEntity d  WHERE d.iddocente=?1")
+    @Query("SELECT count(*) FROM DocenteEntity d  WHERE d.idpersona=?1")
     Integer existeUsuarioPorId(Integer id);
 
     @Query("SELECT count(*) FROM DocenteEntity d  WHERE d.numeroidentificacion=?1")
