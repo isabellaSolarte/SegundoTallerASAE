@@ -45,6 +45,6 @@ public class DocenteDTORespuesta
     private TelefonoDTORespuesta objPeticionTel;
 
     @NotNull(message = "")
-    private List<Integer> departamentos;
+    private List<DepartamentoDTORespuesta> departamentos;
     
 }

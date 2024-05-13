@@ -22,7 +22,7 @@ public class TelefonoDTOPeticion
     private String tipotelefono;
 
     @NotNull(message = "{telefono.numero.emply}")
-    @Size(min = 10, max = 12, message = "{docente.numero.size}")
+    @Size(min = 10, max = 12, message = "{telefono.numero.size}")
     private String numero;
     
 }

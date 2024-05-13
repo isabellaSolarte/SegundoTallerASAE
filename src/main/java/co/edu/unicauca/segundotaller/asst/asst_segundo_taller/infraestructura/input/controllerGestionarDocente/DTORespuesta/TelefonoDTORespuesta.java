@@ -12,7 +12,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class TelefonoDTORespuesta 
 {
-     @NotNull(message = "{telefono.idtelefono.emply}")
+    @NotNull(message = "{telefono.idtelefono.emply}")
     private int idtelefono;
 
     @NotNull(message = "{telefono.tipotelefono.emply}")
@@ -20,7 +20,7 @@ public class TelefonoDTORespuesta
     private String tipotelefono;
 
     @NotNull(message = "{telefono.numero.emply}")
-    @Size(min = 10, max = 12, message = "{docente.numero.size}")
+    @Size(min = 10, max = 12, message = "{tellefono.numero.size}")
     private String numero;
     
 }
