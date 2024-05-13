@@ -9,10 +9,13 @@ import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.dominio.casosDeUso
 
 @Configuration
 public class BeanConfigurations {
+    
     @Bean
-    public GestionarCuestionarioCUAdapter crearGestionarCuestionarioCUInt(GestionarCuestionarioGatewayIntPort objGestionarCuestionarioGateway, 
+    public GestionarCuestionarioCUAdapter gestionarCuestionarioCUInt(
+        GestionarCuestionarioGatewayIntPort objGestionarCuestionarioGateway, 
         ExcepcionFormateadorResultadosIntPort objCuestionarioFormateadorResultados
     ){
-        return new GestionarCuestionarioCUAdapter(objGestionarCuestionarioGateway, objCuestionarioFormateadorResultados);
+        GestionarCuestionarioCUAdapter objGestionarCuestionarioCUAdapter = new GestionarCuestionarioCUAdapter(objGestionarCuestionarioGateway, objCuestionarioFormateadorResultados);
+        return objGestionarCuestionarioCUAdapter;
     }
 }
