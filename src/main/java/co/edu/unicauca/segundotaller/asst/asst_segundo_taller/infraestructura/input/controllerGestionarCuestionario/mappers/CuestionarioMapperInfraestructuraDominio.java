@@ -13,5 +13,4 @@ public interface CuestionarioMapperInfraestructuraDominio {
     Cuestionario mappearDePeticionACuestionario(CuestionarioDTOPeticion peticion);
     CuestionarioDTORespuesta mappearDeCuestionarioARespuesta(Cuestionario objCuestionario);
     List<CuestionarioDTORespuesta> mappearDeCuestionariosARespuesta(List<Cuestionario> cuestionarios);
-    //TODO preguntas
 }

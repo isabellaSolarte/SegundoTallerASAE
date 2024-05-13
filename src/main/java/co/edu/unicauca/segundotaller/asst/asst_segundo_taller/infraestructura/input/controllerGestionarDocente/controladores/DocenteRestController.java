@@ -20,7 +20,7 @@ import lombok.RequiredArgsConstructor;
 @RestController
 @RequestMapping("/api")
 @RequiredArgsConstructor
-@Validated
+
 public class DocenteRestController 
 {
     private final GestionarDocenteCUIntPort objGestionarDocenteCUInt;

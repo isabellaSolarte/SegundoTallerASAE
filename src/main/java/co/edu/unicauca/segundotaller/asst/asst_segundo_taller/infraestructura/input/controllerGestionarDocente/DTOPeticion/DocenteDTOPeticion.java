@@ -5,6 +5,7 @@ package co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.i
 import java.util.List;
 
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
 import lombok.AllArgsConstructor;
@@ -43,7 +44,7 @@ public class DocenteDTOPeticion
     @Size(min = 7, max = 30, message = "{docente.vinculacion.size}")
     private String vinculacion;
 
-    //TODO anotation
+    @Pattern(regexp = "(?:3[0-9]{9})|(?:[1-9][0-9]{8})", message = "{telefono.size.pattern}")
     private TelefonoDTOPeticion objPeticionTel;
 
     @NotNull(message = "")
