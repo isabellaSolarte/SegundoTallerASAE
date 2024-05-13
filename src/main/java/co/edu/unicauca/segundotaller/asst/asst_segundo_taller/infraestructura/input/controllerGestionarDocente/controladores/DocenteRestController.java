@@ -26,7 +26,7 @@ public class DocenteRestController
     private final GestionarDocenteCUIntPort objGestionarDocenteCUInt;
     private final DocenteMapperInfraestructuraDominio objMapeador;
 
-    @PostMapping("/docentes")
+    @PostMapping("/docente")
     public ResponseEntity<DocenteDTORespuesta> create(@RequestBody DocenteDTOPeticion objDocente) {
 
         Docente objDocenteCrear = objMapeador.mappearDePeticionADocente(objDocente);

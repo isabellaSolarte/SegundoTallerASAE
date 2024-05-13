@@ -4,6 +4,7 @@ import java.util.List;
 
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.dominio.modelos.Cuestionario;
 
+
 public interface GestionarCuestionarioGatewayIntPort {
     public boolean existeCuestionarioPorTitulo(String tituloCuestionario);
     public Cuestionario guardar(Cuestionario objCuestionario);

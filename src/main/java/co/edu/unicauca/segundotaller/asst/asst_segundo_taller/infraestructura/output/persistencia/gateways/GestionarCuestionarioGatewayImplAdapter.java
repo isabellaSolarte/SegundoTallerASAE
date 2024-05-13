@@ -2,12 +2,15 @@ package co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.o
 
 import java.util.List;
 import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.aplicacion.output.GestionarCuestionarioGatewayIntPort;
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.dominio.modelos.Cuestionario;
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.output.persistencia.entities.CuestionarioEntity;
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.output.persistencia.repositorios.CuestionariosRepository;
 
+@Service
 public class GestionarCuestionarioGatewayImplAdapter implements GestionarCuestionarioGatewayIntPort 
 {
     private final CuestionariosRepository objCuestionarioRepository;
