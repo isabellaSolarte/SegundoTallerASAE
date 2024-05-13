@@ -5,10 +5,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class CuestionarioMapper {
+public class Mapper {
     
     @Bean
-    public ModelMapper crearCuestionarioMapper(){
+    public ModelMapper crearMapper(){
         return new ModelMapper();
     } 
 }
