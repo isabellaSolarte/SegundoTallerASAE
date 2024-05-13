@@ -3,16 +3,16 @@ package co.edu.unicauca.segundotaller.asst.asst_segundo_taller.dominio.casosDeUs
 import java.util.List;
 
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.aplicacion.input.GestionarDocenteCUIntPort;
-import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.aplicacion.output.DocenteFormateadorResultadosIntPort;
+import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.aplicacion.output.ExcepcionFormateadorResultadosIntPort;
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.aplicacion.output.GestionarDocenteGatewayIntPort;
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.dominio.modelos.Docente;
 
 public class GestionarDocenteCUAdapter implements GestionarDocenteCUIntPort
 {
     private final GestionarDocenteGatewayIntPort objGestionarDocenteGateway;
-    private final DocenteFormateadorResultadosIntPort objDocenteFormateadorResultados;
+    private final ExcepcionFormateadorResultadosIntPort objDocenteFormateadorResultados;
 
-    public GestionarDocenteCUAdapter(GestionarDocenteGatewayIntPort objGestionarDocenteGateway, DocenteFormateadorResultadosIntPort objDocenteFormateadorResultados)
+    public GestionarDocenteCUAdapter(GestionarDocenteGatewayIntPort objGestionarDocenteGateway, ExcepcionFormateadorResultadosIntPort objDocenteFormateadorResultados)
     {
         this.objDocenteFormateadorResultados = objDocenteFormateadorResultados;
         this.objGestionarDocenteGateway = objGestionarDocenteGateway;
