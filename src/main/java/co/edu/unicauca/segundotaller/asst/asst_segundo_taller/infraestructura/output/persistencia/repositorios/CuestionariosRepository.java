@@ -8,7 +8,7 @@ import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.ou
 
 @Repository
 public interface CuestionariosRepository extends CrudRepository<CuestionarioEntity, Integer> {
-    @Query("SELECT count(*) FROM Cuestionario c WHERE c.titulo = ?1")
+    @Query("SELECT count(*) FROM CuestionarioEntity c WHERE c.titulo = ?1")
     Integer existeCuestionarioPorTitulo(String titulo);
 
     //listar cuestionario utilizando el id del docente
