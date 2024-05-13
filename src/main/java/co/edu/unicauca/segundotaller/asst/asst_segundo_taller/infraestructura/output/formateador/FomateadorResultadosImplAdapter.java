@@ -5,9 +5,8 @@ import org.springframework.stereotype.Service;
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.aplicacion.output.ExcepcionFormateadorResultadosIntPort;
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.output.controladorExcepciones.excepcionesPropias.EntidadYaExisteException;
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.output.controladorExcepciones.excepcionesPropias.ReglaNegocioExcepcion;
-
 @Service
-public class DocenteFormateadorResultadosImplAdapter implements ExcepcionFormateadorResultadosIntPort
+public class FomateadorResultadosImplAdapter implements ExcepcionFormateadorResultadosIntPort
 {
 
     @Override
