@@ -8,13 +8,12 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
-import lombok.AllArgsConstructor;
+
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-@AllArgsConstructor
 public class DocenteDTOPeticion 
 {
     @NotNull(message = "{docente.iddocente.emply}")
@@ -49,6 +48,12 @@ public class DocenteDTOPeticion
 
     @NotNull(message = "")
     private List<Integer> departamentos;
+
+    public DocenteDTOPeticion()
+    {
+        
+    }
+    
 
 
     
