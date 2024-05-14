@@ -10,8 +10,6 @@ import lombok.*;
 @Setter
 @Entity
 @Builder
-@AllArgsConstructor
-@NoArgsConstructor
 @Table(name = "Respuesta")
 public class RespuestaEntity {
     
@@ -29,6 +27,15 @@ public class RespuestaEntity {
     @ManyToOne
     @JoinColumn(name = "idDocente", nullable = false)
     private DocenteEntity objDocente;
+    public RespuestaEntity() {
 
+    }
+
+    public RespuestaEntity(Integer idrespuesta, String descripcion, PreguntaEntity objPregunta, DocenteEntity objDocente) {
+        this.idrespuesta = idrespuesta;
+        this.descripcion = descripcion;
+        this.objPregunta = objPregunta;
+        this.objDocente = objDocente;
+    }
 
 }

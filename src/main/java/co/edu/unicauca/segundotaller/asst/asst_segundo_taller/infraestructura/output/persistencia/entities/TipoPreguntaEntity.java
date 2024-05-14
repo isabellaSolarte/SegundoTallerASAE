@@ -12,7 +12,6 @@ import lombok.*;
 @Setter
 @Entity
 @Builder
-@AllArgsConstructor
 @Table(name = "TipoPregunta")
 public class TipoPreguntaEntity {
     
@@ -29,6 +28,12 @@ public class TipoPreguntaEntity {
     @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy = "objTipoPregunta")
     private List<PreguntaEntity> listaPregunta;
 
+    public TipoPreguntaEntity(Integer idtippregunta, String nombre, String descripcion, List<PreguntaEntity> listaPregunta) {
+        this.idtippregunta = idtippregunta;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.listaPregunta = listaPregunta;
+    }
     public TipoPreguntaEntity(){
         this.listaPregunta = new ArrayList<>();
     }

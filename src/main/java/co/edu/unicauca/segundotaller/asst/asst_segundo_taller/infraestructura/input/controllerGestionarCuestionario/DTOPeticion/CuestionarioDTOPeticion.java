@@ -11,7 +11,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
-@AllArgsConstructor
 public class CuestionarioDTOPeticion {
     private int idcuestionario;
 
@@ -25,6 +24,13 @@ public class CuestionarioDTOPeticion {
 
     @NotEmpty(message = "{cuestionario.preguntas.emply}")
     List<PreguntaDTOPeticion> preguntas;
+
+    public CuestionarioDTOPeticion(int idcuestionario, String titulo, String descripcion, List<PreguntaDTOPeticion> preguntas) {
+        this.idcuestionario = idcuestionario;
+        this.titulo = titulo;
+        this.descripcion = descripcion;
+        this.preguntas = preguntas;
+    }
     public CuestionarioDTOPeticion(){
         this.preguntas = new ArrayList<>();
     }

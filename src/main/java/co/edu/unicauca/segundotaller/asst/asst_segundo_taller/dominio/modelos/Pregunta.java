@@ -5,9 +5,12 @@ import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Data
-@AllArgsConstructor
+@Getter
+@Setter
 public class Pregunta 
 {
     
@@ -16,7 +19,15 @@ public class Pregunta
     private List<Respuesta> respuestas;
     private TipoPregunta objTipoPregunta;
     private Cuestionario objCuestionario;
-
+    
+    public Pregunta(int idpregunta, String enunciado, List<Respuesta> respuestas, TipoPregunta objTipoPregunta, Cuestionario objCuestionario) {
+        this.idpregunta = idpregunta;
+        this.enunciado = enunciado;
+        this.respuestas = respuestas;
+        this.objTipoPregunta = objTipoPregunta;
+        this.objCuestionario = objCuestionario;
+        this.respuestas = new ArrayList<>();
+    }
     public Pregunta()
     {
         this.respuestas = new ArrayList<>();

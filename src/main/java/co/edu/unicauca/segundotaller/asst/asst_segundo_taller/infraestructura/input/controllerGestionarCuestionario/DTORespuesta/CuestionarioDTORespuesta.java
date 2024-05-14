@@ -11,12 +11,17 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@AllArgsConstructor
 public class CuestionarioDTORespuesta {
     private int idcuestionario;
     private String titulo;
     private String descripcion;
     List<PreguntaDTORespuesta> preguntas;
+    public CuestionarioDTORespuesta(int idcuestionario, String titulo, String descripcion, List<PreguntaDTORespuesta> preguntas) {
+        this.idcuestionario = idcuestionario;
+        this.titulo = titulo;
+        this.descripcion = descripcion;
+        this.preguntas = preguntas;
+    }
     public CuestionarioDTORespuesta(){
         this.preguntas = new ArrayList<>();
     }

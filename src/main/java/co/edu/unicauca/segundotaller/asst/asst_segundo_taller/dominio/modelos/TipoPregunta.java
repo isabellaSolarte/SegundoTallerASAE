@@ -5,16 +5,24 @@ import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Data
-@AllArgsConstructor
+@Getter
+@Setter
 public class TipoPregunta 
 {
     private Integer idtippregunta;
     private String nombre;
     private String descripcion;
     private List<Pregunta> listaPregunta;
-
+    public TipoPregunta(Integer idtippregunta, String nombre, String descripcion, List<Pregunta> listaPregunta) {
+        this.idtippregunta = idtippregunta;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.listaPregunta = listaPregunta;
+    }
     public TipoPregunta(){
         this.listaPregunta = new ArrayList<>();
     }
