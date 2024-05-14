@@ -1,5 +1,6 @@
 package co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.input.controllerGestionarDocente.DTORespuesta;
 
+import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.input.controllerGestionarDocente.DTOPeticion.DocenteDTOPeticion;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
@@ -20,7 +21,10 @@ public class TelefonoDTORespuesta
     private String tipotelefono;
 
     @NotNull(message = "{telefono.numero.emply}")
-    @Size(min = 10, max = 12, message = "{tellefono.numero.size}")
+    @Size(min = 10, max = 12, message = "{telefono.numero.size}")
     private String numero;
+     private DocenteDTORespuesta objDocente;
+    public TelefonoDTORespuesta()
+    {}
     
 }

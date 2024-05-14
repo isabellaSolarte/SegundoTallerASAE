@@ -21,7 +21,7 @@ public class DocenteDTORespuesta
 
     @NotNull(message = "{docente.tipoidentificacion.emply}")
     @Size(min = 5, max = 45, message = "{docente.tipoidentificacion.size}")
-    private String tipoIdentificacion;
+    private String tipoidentificacion;
 
     @NotNull(message = "{docente.numeroidentificacion.emply}")
     @Size(min = 1, max = 10, message = "{docente.numeroidentificacion.size}")
@@ -36,8 +36,10 @@ public class DocenteDTORespuesta
     private String apellidos;
 
     @NotNull(message = "{docente.correo.emply}")
-    @Size(min = 30, max = 30, message = "{docente.correo.size}")
+    @Size(min = 10, max = 30, message = "{docente.correo.size}")
     private String correo;
+
+    private List<RespuestaDTOPeticion> respuestas; 
 
     @NotNull(message = "{docente.vinculacion.emply}")
     @Size(min = 7, max = 30, message = "{docente.vinculacion.size}")
@@ -45,9 +47,14 @@ public class DocenteDTORespuesta
 
     @Pattern(regexp = "(?:3[0-9]{9})|(?:[1-9][0-9]{8})", message = "{telefono.size.pattern}")
     private TelefonoDTORespuesta objTelefono;
-    private List<RespuestaDTOPeticion> respuestas;
+    
 
     @NotNull(message = "")
     private List<DepartamentoDTORespuesta> listaDepartamentos;
+    public DocenteDTORespuesta()
+    {
+        
+    }
+    
     
 }

@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
-@AllArgsConstructor
 public class Departamento 
 {
     
@@ -14,7 +13,12 @@ public class Departamento
     private String descripcion;
 
 
-
     public Departamento()
     {}
+    public Departamento(int iddepartamento, String nombre, String descripcion)
+    {
+        this.iddepartamento = iddepartamento;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+    }
 }

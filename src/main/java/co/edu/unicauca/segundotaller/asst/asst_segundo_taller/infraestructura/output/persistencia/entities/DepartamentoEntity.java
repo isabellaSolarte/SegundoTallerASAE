@@ -9,7 +9,6 @@ import lombok.*;
 @Setter
 @Entity
 @Builder
-@AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "Departamentos")
 public class DepartamentoEntity {
@@ -24,5 +23,11 @@ public class DepartamentoEntity {
     @Column( nullable = false, length = 30)
     private String descripcion;
     
+    public DepartamentoEntity(Integer iddepartamento, String nombre, String descripcion)
+    {
+        this.iddepartamento = iddepartamento;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+    }
 
 }
