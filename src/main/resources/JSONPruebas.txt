@@ -1,0 +1,14 @@
+{
+  "titulo": "Nuevo cuestionario",
+  "descripcion": "Cuál es el animal",
+  "preguntas": [
+    {
+      "enunciado": "La respuesta a esta pregunta puede sorprenderte.",
+      "respuestas": [],
+      "objTipoPregunta": {
+        "idTipoPregunta": 1
+      }
+    }
+  ]
+}
+localhost:5000/api/cuestionario

@@ -10,7 +10,6 @@ import java.util.List;
 @Setter
 @Entity
 @Builder
-@AllArgsConstructor
 
 @Table(name = "Preguntas")
 public class PreguntaEntity {
@@ -32,6 +31,14 @@ public class PreguntaEntity {
     @ManyToOne
     @JoinColumn(name = "idCuestionario", nullable = false)
     private CuestionarioEntity objCuestionario;
+
+    public PreguntaEntity(Integer idpregunta, String enunciado, List<RespuestaEntity> respuestas, TipoPreguntaEntity objTipoPregunta, CuestionarioEntity objCuestionario) {
+        this.idpregunta = idpregunta;
+        this.enunciado = enunciado;
+        this.respuestas = respuestas;
+        this.objTipoPregunta = objTipoPregunta;
+        this.objCuestionario = objCuestionario;
+    }
     public PreguntaEntity (){
         this.respuestas = new ArrayList<>();
     }

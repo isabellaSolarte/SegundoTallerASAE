@@ -35,7 +35,7 @@ public class CuestionarioRestController {
                 HttpStatus.CREATED);
         return objRespuesta;
     }
-    @GetMapping("/cuestionario")
+    @GetMapping("/cuestionarios")
     public ResponseEntity<List<CuestionarioDTORespuesta>> listar() {
         ResponseEntity<List<CuestionarioDTORespuesta>> objRespuesta = new ResponseEntity<List<CuestionarioDTORespuesta>>(
                 objMapeador.mappearDeCuestionariosARespuesta(this.objGestionarCuestionarioCUInt.listar()),

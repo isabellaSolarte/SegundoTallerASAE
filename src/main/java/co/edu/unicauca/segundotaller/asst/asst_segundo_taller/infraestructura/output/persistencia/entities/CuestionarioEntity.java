@@ -17,7 +17,6 @@ import jakarta.persistence.Table;
 @Setter
 @Entity
 @Builder
-@AllArgsConstructor
 @Table(name = "Cuestionarios")
 
 public class CuestionarioEntity {
@@ -34,6 +33,13 @@ public class CuestionarioEntity {
 
     @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, fetch = FetchType.EAGER, mappedBy = "objCuestionario")
     private List<PreguntaEntity> preguntas;
+    
+    public CuestionarioEntity(Integer idcuestionario, String titulo, String descripcion, List<PreguntaEntity> preguntas) {
+        this.idcuestionario = idcuestionario;
+        this.titulo = titulo;
+        this.descripcion = descripcion;
+        this.preguntas = preguntas;
+    }
     public CuestionarioEntity(){
         this.preguntas = new ArrayList<>();
     }

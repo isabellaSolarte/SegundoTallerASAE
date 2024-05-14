@@ -1,25 +1,32 @@
 package co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.output.persistencia.gateways;
 
 import java.util.List;
+
+import java.util.Optional;
 import org.modelmapper.ModelMapper;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.aplicacion.output.GestionarCuestionarioGatewayIntPort;
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.dominio.modelos.Cuestionario;
+import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.dominio.modelos.Pregunta;
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.output.persistencia.entities.CuestionarioEntity;
+import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.output.persistencia.entities.PreguntaEntity;
+import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.output.persistencia.entities.TipoPreguntaEntity;
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.output.persistencia.repositorios.CuestionariosRepository;
+import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.output.persistencia.repositorios.TipoPreguntasRepository;
+import jakarta.persistence.EntityNotFoundException;
 
 @Service
 public class GestionarCuestionarioGatewayImplAdapter implements GestionarCuestionarioGatewayIntPort 
 {
     private final CuestionariosRepository objCuestionarioRepository;
     private final ModelMapper cuestionarioModelMapper;
-
-    public GestionarCuestionarioGatewayImplAdapter(CuestionariosRepository objCuestionarioRepository, ModelMapper cuestionarioModelMapper)
+    private final TipoPreguntasRepository tipoPreguntaRepository;
+    public GestionarCuestionarioGatewayImplAdapter(CuestionariosRepository objCuestionarioRepository, ModelMapper cuestionarioModelMapper,TipoPreguntasRepository tipoPreguntaRepository)
     {
         this.objCuestionarioRepository = objCuestionarioRepository;
         this.cuestionarioModelMapper = cuestionarioModelMapper;
+        this.tipoPreguntaRepository = tipoPreguntaRepository;
     }
 
 	@Override
@@ -30,6 +37,23 @@ public class GestionarCuestionarioGatewayImplAdapter implements GestionarCuestio
 	@Override
 	public Cuestionario guardar(Cuestionario objCuestionario) {
         CuestionarioEntity objCuestionarioEntity = this.cuestionarioModelMapper.map(objCuestionario, CuestionarioEntity.class);
+       
+        //Asignar las preguntas al cuestionario
+        for (Pregunta pregunta : objCuestionario.getPreguntas()) {
+            if (pregunta.getObjTipoPregunta() == null) {
+                throw new IllegalArgumentException("El campo objTipoPregunta no puede ser nulo");
+            }
+            PreguntaEntity preguntaEntity = this.cuestionarioModelMapper.map(pregunta, PreguntaEntity.class);
+            
+            // Recuperar el tipo de pregunta existente
+            Optional<TipoPreguntaEntity> tipoPreguntaEntityOptional = tipoPreguntaRepository.findById(pregunta.getObjTipoPregunta().getIdtippregunta());
+            TipoPreguntaEntity tipoPreguntaEntity = tipoPreguntaEntityOptional.orElseThrow(() -> new EntityNotFoundException("TipoPregunta not found"));
+
+            preguntaEntity.setObjTipoPregunta(tipoPreguntaEntity);
+            preguntaEntity.setObjCuestionario(objCuestionarioEntity);
+
+            objCuestionarioEntity.getPreguntas().add(preguntaEntity);
+        }
         CuestionarioEntity objCuestionarioEntityRegistrado = this.objCuestionarioRepository.save(objCuestionarioEntity);
         Cuestionario objCuestionarioRespuesta = this.cuestionarioModelMapper.map(objCuestionarioEntityRegistrado, Cuestionario.class);
         return objCuestionarioRespuesta;
@@ -38,7 +62,7 @@ public class GestionarCuestionarioGatewayImplAdapter implements GestionarCuestio
 
 	@Override
 	public List<Cuestionario> listar() {
-		Iterable<CuestionarioEntity> lista = this.objCuestionarioRepository.findAll();
+		Iterable<CuestionarioEntity> lista = this.objCuestionarioRepository.findAll(); //TODO-cambiar
         List<Cuestionario> listaObtenida = this.cuestionarioModelMapper.map(lista, new org.modelmapper.TypeToken<List<Cuestionario>>() {
         }.getType());
         return listaObtenida;
