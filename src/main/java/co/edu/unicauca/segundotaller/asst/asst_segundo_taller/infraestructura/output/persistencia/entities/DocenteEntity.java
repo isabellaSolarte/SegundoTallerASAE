@@ -35,6 +35,16 @@ public class DocenteEntity extends PersonaEntity{
 
     public DocenteEntity(){
         this.listaDepartamentos = new ArrayList<>();
+        this.respuestas = new ArrayList<>();
+    }
+    public DocenteEntity(String tipoIdentificacion, String numeroIdentificacion, String nombres, String apellidos, String correo, String vinculacion,
+                         TelefonoEntity objTelefono, List<RespuestaEntity> listaRespuestas, List<DepartamentoEntity> listaDepartamentos) {
+        super( tipoIdentificacion, numeroIdentificacion, nombres, apellidos);
+        this.correo = correo;
+        this.vinculacion = vinculacion;
+        this.objTelefono = objTelefono;
+        this.respuestas = listaRespuestas;
+        this.listaDepartamentos = listaDepartamentos;
     }
 
 }

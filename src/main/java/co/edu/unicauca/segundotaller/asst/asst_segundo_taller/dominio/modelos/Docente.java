@@ -20,11 +20,11 @@ public class Docente extends Persona
         this.listaDepartamentos = new ArrayList<>();
     }
 
-    public Docente(Integer idpersona, String tipoidentificacion, String numeroidentificacion, String nombres,
-                     String apellidos, String correo, String vinculacion, Telefono objTelefono)
-    {
-        super(idpersona, tipoidentificacion, numeroidentificacion, nombres, apellidos);
-        this.respuestas = new ArrayList<>();
-        this.listaDepartamentos = new ArrayList<>();
+    public Docente( String tipoIdentificacion, String numeroIdentificacion, String nombres,
+                    String apellidos, String correo, String vinculacion, Telefono telefono) {
+        super( tipoIdentificacion, numeroIdentificacion, nombres, apellidos);
+        this.correo = correo;
+        this.vinculacion = vinculacion;
+        this.objTelefono=telefono;
     }
 }

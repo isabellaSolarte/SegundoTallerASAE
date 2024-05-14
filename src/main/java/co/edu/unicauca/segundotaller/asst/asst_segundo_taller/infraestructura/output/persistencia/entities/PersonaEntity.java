@@ -32,6 +32,11 @@ public class PersonaEntity {
     @Column(nullable = false, length = 30)
     private String apellidos;
 
-
+    public PersonaEntity(String tipoidentificacion, String numeroidentificacion, String nombres, String apellidos) {
+        this.tipoidentificacion = tipoidentificacion;
+        this.numeroidentificacion = numeroidentificacion;
+        this.nombres = nombres;
+        this.apellidos = apellidos;
+    }
     
 }

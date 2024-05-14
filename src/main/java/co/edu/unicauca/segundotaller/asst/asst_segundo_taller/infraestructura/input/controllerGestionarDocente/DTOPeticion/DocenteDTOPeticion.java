@@ -37,8 +37,8 @@ public class DocenteDTOPeticion
     private String apellidos;
 
     @NotNull(message = "{docente.correo.emply}")
-    @Size(min = 30, max = 30, message = "{docente.correo.size}")
-    private String correo;
+    @Size(min = 10, max = 30, message = "{docente.correo.size}")
+    private String correo ;
 
     private List<RespuestaDTOPeticion> respuestas;
 
@@ -46,7 +46,7 @@ public class DocenteDTOPeticion
     @Size(min = 7, max = 30, message = "{docente.vinculacion.size}")
     private String vinculacion;
 
-    @Pattern(regexp = "(?:3[0-9]{9})|(?:[1-9][0-9]{8})", message = "{telefono.size.pattern}")
+    //@Pattern(regexp = "(?:3[0-9]{9})|(?:[1-9][0-9]{8})", message = "{telefono.size.pattern}")
     private TelefonoDTOPeticion objTelefono;
 
     @NotNull(message = "")

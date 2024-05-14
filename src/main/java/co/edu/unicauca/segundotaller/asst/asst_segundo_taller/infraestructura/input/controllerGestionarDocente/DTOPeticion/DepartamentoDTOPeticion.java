@@ -19,4 +19,7 @@ public class DepartamentoDTOPeticion {
     @NotNull(message = "{departamento.descripcion.emply}")
     @Size(min = 5, max = 35, message = "{departamento.descripcion.size}")
     private String descripcion;
+
+    public DepartamentoDTOPeticion()
+    {}
 }

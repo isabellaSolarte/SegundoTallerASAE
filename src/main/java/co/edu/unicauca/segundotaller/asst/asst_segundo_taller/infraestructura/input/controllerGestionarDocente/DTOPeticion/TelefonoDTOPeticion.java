@@ -25,5 +25,9 @@ public class TelefonoDTOPeticion
     @Size(min = 10, max = 12, message = "{telefono.numero.size}")
     private String numero;
     
+    private DocenteDTOPeticion objDocente;
+    public TelefonoDTOPeticion()
+    {}
+    
 }
 

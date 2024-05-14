@@ -5,15 +5,23 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
-@AllArgsConstructor
+
 public class Persona 
 {
-    private Integer idpersona;
+    private int idpersona;
     private String tipoidentificacion;
     private String numeroidentificacion;
     private String nombres;
     private String apellidos;
-    
-    public Persona()
-    {}
+
+    public Persona(String tipoidentificacion, String numeroidentificacion, String nombres, String apellidos) {
+        this.tipoidentificacion = tipoidentificacion;
+        this.numeroidentificacion = numeroidentificacion;
+        this.nombres = nombres;
+        this.apellidos = apellidos;
+    }
+
+    public Persona() {
+
+    }
 }

@@ -10,7 +10,6 @@ import lombok.*;
 @Setter
 @Entity
 @Builder
-@AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "Telefono")
 public class TelefonoEntity {
@@ -28,5 +27,13 @@ public class TelefonoEntity {
     @OneToOne
     @JoinColumn(name="idDocente")
     private DocenteEntity objDocente;
+
+    public TelefonoEntity(Integer idtelefono, String tipotelefono, String numero, DocenteEntity objDocente)
+    {
+        this.idtelefono = idtelefono;
+        this.tipotelefono = tipotelefono;
+        this.numero = numero;
+        this.objDocente = objDocente;
+    }
     
 }
