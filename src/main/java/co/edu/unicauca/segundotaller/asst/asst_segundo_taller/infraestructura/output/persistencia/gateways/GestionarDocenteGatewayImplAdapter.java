@@ -41,8 +41,14 @@ public class GestionarDocenteGatewayImplAdapter implements GestionarDocenteGatew
     public Docente guardar(Docente objDocente) 
     {
         DocenteEntity objDocenteEntity = this.docenteModelMapper.map(objDocente, DocenteEntity.class);
-        objDocenteEntity.getObjTelefono().setObjDocente(objDocenteEntity);
-        System.out.println(objDocenteEntity.getObjTelefono().getObjDocente().getNumeroidentificacion()+"ASFREGVEFAAAAAAAAAA");
+        TelefonoEntity telAux = new TelefonoEntity(
+            objDocenteEntity.getObjTelefono().getIdtelefono(),
+            objDocenteEntity.getObjTelefono().getTipotelefono(),
+            objDocenteEntity.getObjTelefono().getNumero(),
+            objDocenteEntity
+        );
+        objDocenteEntity.setObjTelefono(telAux);
+        telAux.setObjDocente(objDocenteEntity);
 
         List<DepartamentoEntity> departamentosAñadir = new ArrayList<>();
         for(DepartamentoEntity dept: objDocenteEntity.getListaDepartamentos())

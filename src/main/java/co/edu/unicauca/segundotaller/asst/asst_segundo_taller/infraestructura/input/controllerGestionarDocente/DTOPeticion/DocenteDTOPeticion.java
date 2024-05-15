@@ -8,13 +8,13 @@ import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.in
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
-
-
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
+@Data
 public class DocenteDTOPeticion 
 {
     @NotNull(message = "{docente.iddocente.emply}")

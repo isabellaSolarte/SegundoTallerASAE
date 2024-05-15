@@ -7,10 +7,13 @@ import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.in
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Data
+@Getter
+@Setter
 public class CuestionarioDTOPeticion {
     private int idcuestionario;
 
@@ -22,17 +25,19 @@ public class CuestionarioDTOPeticion {
     @Size(min = 3, max = 400, message = "{cuestionario.descripcion.size}")
     private String descripcion;
 
-    @NotEmpty(message = "{cuestionario.preguntas.emply}")
-    List<PreguntaDTOPeticion> preguntas;
+   private List<PreguntaDTOPeticion> preguntas;
+
+   
+   public CuestionarioDTOPeticion(){
+    this.preguntas = new ArrayList<PreguntaDTOPeticion>();
+   }
 
     public CuestionarioDTOPeticion(int idcuestionario, String titulo, String descripcion, List<PreguntaDTOPeticion> preguntas) {
         this.idcuestionario = idcuestionario;
         this.titulo = titulo;
         this.descripcion = descripcion;
-        this.preguntas = preguntas;
+        this.preguntas=preguntas; 
     }
-    public CuestionarioDTOPeticion(){
-        this.preguntas = new ArrayList<>();
-    }
+    
 
 }

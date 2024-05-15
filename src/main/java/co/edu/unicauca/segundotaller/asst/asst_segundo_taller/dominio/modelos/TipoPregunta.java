@@ -3,6 +3,7 @@ package co.edu.unicauca.segundotaller.asst.asst_segundo_taller.dominio.modelos;
 import java.util.ArrayList;
 import java.util.List;
 
+import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.input.controllerGestionarPregunta.DTOPeticion.PreguntaDTOPeticion;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -13,7 +14,7 @@ import lombok.Setter;
 @Setter
 public class TipoPregunta 
 {
-    private Integer idtippregunta;
+    private int idtippregunta;
     private String nombre;
     private String descripcion;
     private List<Pregunta> listaPregunta;
