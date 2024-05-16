@@ -12,18 +12,16 @@ import lombok.Setter;
 public class PreguntaDTORespuesta {
     private int idpregunta;
     private String enunciado;
-    private List<RespuestaDTORespuesta> respuestas;
     private TipoPreguntaDTORespuesta idTipoPregunta;
     private CuestionarioDTORespuesta objCuestionario;
     public PreguntaDTORespuesta(int idpregunta, String enunciado, List<RespuestaDTORespuesta> respuestas, TipoPreguntaDTORespuesta idTipoPregunta, CuestionarioDTORespuesta objCuestionario) {
         this.idpregunta = idpregunta;
         this.enunciado = enunciado;
-        this.respuestas = respuestas;
         this.idTipoPregunta = idTipoPregunta;
         this.objCuestionario = objCuestionario;
     }
     public PreguntaDTORespuesta(){
-        this.respuestas = new ArrayList<>();
+        
     }
 
 }

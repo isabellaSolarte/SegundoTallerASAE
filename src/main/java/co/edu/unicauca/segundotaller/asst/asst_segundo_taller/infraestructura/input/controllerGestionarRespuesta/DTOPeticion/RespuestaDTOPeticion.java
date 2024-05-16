@@ -17,17 +17,13 @@ public class RespuestaDTOPeticion {
     @Size(min = 3, max = 400, message = "{respuesta.descripcion.size}")
     private String descripcion;
 
-    private PreguntaDTOPeticion objPregunta;
-    private DocenteDTOPeticion objDocente;
+    private int idPregunta;
+    private int idDocente;
     public RespuestaDTOPeticion(){}
-    public RespuestaDTOPeticion(int idrespuesta, String descripcion, PreguntaDTOPeticion objPregunta, DocenteDTOPeticion objDocente) 
+    public RespuestaDTOPeticion(int idrespuesta, String descripcion) 
     {
         this.idrespuesta = idrespuesta;
         this.descripcion = descripcion;
-        this.objPregunta = objPregunta;
-        this.objDocente = objDocente;
+
     }
-
-    
-
 }
