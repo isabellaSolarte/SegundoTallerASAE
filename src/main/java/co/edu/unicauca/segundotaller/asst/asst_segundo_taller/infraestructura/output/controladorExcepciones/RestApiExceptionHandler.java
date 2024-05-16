@@ -27,7 +27,6 @@ public class RestApiExceptionHandler {
         @ExceptionHandler(Exception.class)
         public ResponseEntity<Error> handleGenericException(final HttpServletRequest req,
                         final Exception ex, final Locale locale) {
-                                System.out.println("dsdsds"+ex.getMessage());
                 final Error error = ErrorUtils
                                 .crearError(CodigoError.ERROR_GENERICO.getCodigo(),
                                                 CodigoError.ERROR_GENERICO.getLlaveMensaje(),

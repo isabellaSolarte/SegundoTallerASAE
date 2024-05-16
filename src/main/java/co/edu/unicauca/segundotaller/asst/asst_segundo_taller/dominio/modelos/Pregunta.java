@@ -12,13 +12,12 @@ import lombok.Setter;
 @Setter
 public class Pregunta 
 {
-    
-    private int idpregunta;
+    private Integer idpregunta;
     private String enunciado;
   
     private TipoPregunta objTipoPregunta;
     
-    public Pregunta(int idpregunta, String enunciado, List<Respuesta> respuestas, TipoPregunta objTipoPregunta) {
+    public Pregunta( Integer idpregunta,String enunciado, List<Respuesta> respuestas, TipoPregunta objTipoPregunta) {
         this.idpregunta = idpregunta;
         this.enunciado = enunciado;
         this.objTipoPregunta = objTipoPregunta;

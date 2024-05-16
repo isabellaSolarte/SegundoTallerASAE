@@ -8,13 +8,11 @@ import org.springframework.stereotype.Service;
 
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.aplicacion.output.GestionarCuestionarioGatewayIntPort;
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.dominio.modelos.Cuestionario;
-import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.dominio.modelos.Pregunta;
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.output.persistencia.entities.CuestionarioEntity;
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.output.persistencia.entities.PreguntaEntity;
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.output.persistencia.entities.TipoPreguntaEntity;
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.output.persistencia.repositorios.CuestionariosRepository;
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.output.persistencia.repositorios.TipoPreguntasRepository;
-import jakarta.persistence.EntityNotFoundException;
 
 @Service
 public class GestionarCuestionarioGatewayImplAdapter implements GestionarCuestionarioGatewayIntPort 
@@ -37,24 +35,18 @@ public class GestionarCuestionarioGatewayImplAdapter implements GestionarCuestio
 	@Override
 	public Cuestionario guardar(Cuestionario objCuestionario) {
         CuestionarioEntity objCuestionarioEntity = this.cuestionarioModelMapper.map(objCuestionario, CuestionarioEntity.class);
-       
         //Asignar las preguntas al cuestionario
-        for (Pregunta pregunta : objCuestionario.getPreguntas()) {
-            if (pregunta.getObjTipoPregunta() == null) {
-                throw new IllegalArgumentException("El campo objTipoPregunta no puede ser nulo");
-            }
-            PreguntaEntity preguntaEntity = this.cuestionarioModelMapper.map(pregunta, PreguntaEntity.class);
-            
-            // Recuperar el tipo de pregunta existente
-            Optional<TipoPreguntaEntity> tipoPreguntaEntityOptional = tipoPreguntaRepository.findById(pregunta.getObjTipoPregunta().getIdtippregunta());
-            TipoPreguntaEntity tipoPreguntaEntity = tipoPreguntaEntityOptional.orElseThrow(() -> new EntityNotFoundException("TipoPregunta not found"));
-
-            preguntaEntity.setObjTipoPregunta(tipoPreguntaEntity);
-            preguntaEntity.setObjCuestionario(objCuestionarioEntity);
-
-            objCuestionarioEntity.getPreguntas().add(preguntaEntity);
+        for (PreguntaEntity pregunta : objCuestionarioEntity.getPreguntas()) {
+            Optional<TipoPreguntaEntity> tipoPregunta = tipoPreguntaRepository.findById(pregunta.getObjTipoPregunta().getIdtippregunta());
+            System.out.println("Tipo de pregunta: "+tipoPregunta.get().getNombre());
+            pregunta.setObjTipoPregunta(tipoPregunta.get());
+            pregunta.setObjCuestionario(objCuestionarioEntity);
+            System.out.println("Pregunta: "+pregunta.getEnunciado());
+            tipoPregunta.get().getListaPregunta().add(pregunta);
         }
+        
         CuestionarioEntity objCuestionarioEntityRegistrado = this.objCuestionarioRepository.save(objCuestionarioEntity);
+        System.out.println("Cuestionario guardado: "+objCuestionarioEntityRegistrado.getTitulo());
         Cuestionario objCuestionarioRespuesta = this.cuestionarioModelMapper.map(objCuestionarioEntityRegistrado, Cuestionario.class);
         return objCuestionarioRespuesta;
     }

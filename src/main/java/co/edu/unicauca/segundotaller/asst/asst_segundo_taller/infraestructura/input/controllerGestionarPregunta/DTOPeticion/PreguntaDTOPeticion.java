@@ -14,8 +14,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class PreguntaDTOPeticion {
-    private int idpregunta;
-
+    private Integer idpregunta;
     @NotNull(message = "{pregunta.enunciado.emply}")
     @Size(min = 3, max = 400, message = "{pregunta.enunciado.size}")
     private String enunciado;
@@ -25,7 +24,7 @@ public class PreguntaDTOPeticion {
     private TipoPreguntaDTOPeticion objTipoPregunta;
 
 
-    public PreguntaDTOPeticion(int idpregunta, String enunciado, List<RespuestaDTOPeticion> respuestas, TipoPreguntaDTOPeticion objTipoPregunta) {
+    public PreguntaDTOPeticion( Integer idpregunta,String enunciado, List<RespuestaDTOPeticion> respuestas, TipoPreguntaDTOPeticion objTipoPregunta) {
         this.idpregunta = idpregunta;
         this.enunciado = enunciado;
         this.objTipoPregunta = objTipoPregunta;

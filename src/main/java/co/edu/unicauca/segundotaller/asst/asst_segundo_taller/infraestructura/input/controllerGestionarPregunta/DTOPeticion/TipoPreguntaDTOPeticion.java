@@ -1,7 +1,5 @@
 package co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.input.controllerGestionarPregunta.DTOPeticion;
 import java.util.List;
-
-import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.output.persistencia.entities.PreguntaEntity;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;

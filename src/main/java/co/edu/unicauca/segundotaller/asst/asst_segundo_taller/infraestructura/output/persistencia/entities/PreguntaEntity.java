@@ -9,8 +9,6 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-@Builder
-
 @Table(name = "Preguntas")
 public class PreguntaEntity {
     
@@ -21,10 +19,10 @@ public class PreguntaEntity {
     @Column(nullable = false, length = 30)
     private String enunciado;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "objPregunta")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "objPregunta")
 	private List<RespuestaEntity> respuestas;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER,cascade = {CascadeType.PERSIST })
     @JoinColumn(name="idTipoPregunta", nullable = false)
     private TipoPreguntaEntity objTipoPregunta;
 
