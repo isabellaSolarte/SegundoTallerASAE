@@ -7,7 +7,8 @@ import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.dominio.modelos.Cu
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.aplicacion.output.ExcepcionFormateadorResultadosIntPort;
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.aplicacion.output.GestionarCuestionarioGatewayIntPort;
 
-public class GestionarCuestionarioCUAdapter implements GestionarCuestionarioCUIntPort{
+public class GestionarCuestionarioCUAdapter implements GestionarCuestionarioCUIntPort
+{
 
     private final GestionarCuestionarioGatewayIntPort objGestionarCuestionarioGateway;
     private final ExcepcionFormateadorResultadosIntPort objCuestionarioFormateadorResultados;

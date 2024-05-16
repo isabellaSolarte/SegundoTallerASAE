@@ -1,7 +1,6 @@
 package co.edu.unicauca.segundotaller.asst.asst_segundo_taller.dominio.modelos;
 
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data

@@ -10,6 +10,7 @@ import lombok.*;
 @Setter
 @Entity
 @Builder
+@AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "Telefono")
 public class TelefonoEntity {
@@ -24,16 +25,14 @@ public class TelefonoEntity {
     @Column(nullable = false, length = 30)
     private String numero;
 
-    @OneToOne
+    //@OneToOne
+    //@JoinColumn(name="idDocente")
+    //private DocenteEntity objDocente;
+    @MapsId
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY , optional = false)
     @JoinColumn(name="idDocente")
     private DocenteEntity objDocente;
 
-    public TelefonoEntity(Integer idtelefono, String tipotelefono, String numero, DocenteEntity objDocente)
-    {
-        this.idtelefono = idtelefono;
-        this.tipotelefono = tipotelefono;
-        this.numero = numero;
-        this.objDocente = objDocente;
-    }
+   
     
 }

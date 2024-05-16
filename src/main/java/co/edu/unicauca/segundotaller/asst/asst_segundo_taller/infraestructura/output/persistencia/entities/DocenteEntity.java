@@ -7,6 +7,8 @@ import lombok.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 
 @Getter
 @Setter
@@ -21,8 +23,10 @@ public class DocenteEntity extends PersonaEntity{
     @Column(nullable = false, length = 30)
     private String vinculacion;
 
-    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy = "objDocente")
-    private TelefonoEntity objTelefono;
+   // @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy = "objDocente")
+   @JsonManagedReference
+   @OneToOne(mappedBy = "objDocente", cascade = CascadeType.ALL , fetch = FetchType.EAGER) 
+   private TelefonoEntity objTelefono;
 
     @OneToMany( mappedBy = "objDocente", fetch = FetchType.EAGER)
     private List<RespuestaEntity> respuestas;
@@ -42,7 +46,6 @@ public class DocenteEntity extends PersonaEntity{
         super( tipoIdentificacion, numeroIdentificacion, nombres, apellidos);
         this.correo = correo;
         this.vinculacion = vinculacion;
-        this.objTelefono = objTelefono;
         this.respuestas = listaRespuestas;
         this.listaDepartamentos = listaDepartamentos;
     }

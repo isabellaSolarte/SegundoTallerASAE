@@ -14,12 +14,18 @@ public class Docente extends Persona
     private List<Respuesta> respuestas;
     private List<Departamento> listaDepartamentos;
 
-    Docente()
+    public Docente()
     {
         this.respuestas = new ArrayList<>();
         this.listaDepartamentos = new ArrayList<>();
     }
-
+    public Docente( String tipoIdentificacion, String numeroIdentificacion, String nombres,
+    String apellidos, String correo, String vinculacion) 
+    {
+        super( tipoIdentificacion, numeroIdentificacion, nombres, apellidos);
+        this.correo = correo;
+        this.vinculacion = vinculacion;
+    }
     public Docente( String tipoIdentificacion, String numeroIdentificacion, String nombres,
                     String apellidos, String correo, String vinculacion, Telefono telefono) {
         super( tipoIdentificacion, numeroIdentificacion, nombres, apellidos);
