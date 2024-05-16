@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.aplicacion.output.GestionarDocenteGatewayIntPort;
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.dominio.modelos.Departamento;
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.dominio.modelos.Docente;
+import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.dominio.modelos.Telefono;
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.output.persistencia.entities.DepartamentoEntity;
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.output.persistencia.entities.DocenteEntity;
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.output.persistencia.entities.TelefonoEntity;
@@ -40,10 +41,30 @@ public class GestionarDocenteGatewayImplAdapter implements GestionarDocenteGatew
     @Override
     public Docente guardar(Docente objDocente) 
     {
+        /*
+         * Telefono objtelefono = new Telefono(
+                //peticion.getIdpersona(),
+                peticion.getObjTelefono().getIdtelefono(),
+                peticion.getObjTelefono().getNumero(),
+                peticion.getObjTelefono().getTipotelefono()
+        );
+        Docente docente = new Docente(
+            peticion.getIdpersona(),
+            peticion.getTipoidentificacion(),
+            peticion.getNumeroidentificacion(),
+            peticion.getNombres(),
+            peticion.getApellidos(),
+            peticion.getCorreo(),
+            peticion.getVinculacion(),
+            objtelefono);
+        objtelefono.setObjDocente(docente);
+         */
         DocenteEntity objDocenteEntity = this.docenteModelMapper.map(objDocente, DocenteEntity.class);
-        objDocenteEntity.getObjTelefono().setObjDocente(objDocenteEntity);
-        System.out.println(objDocenteEntity.getObjTelefono().getObjDocente().getNumeroidentificacion()+"ASFREGVEFAAAAAAAAAA");
+        TelefonoEntity telefonoEntity = docenteModelMapper.map(objDocente.getObjTelefono(),TelefonoEntity.class);
 
+        telefonoEntity.setObjDocente(objDocenteEntity);
+        objDocenteEntity.setObjTelefono(telefonoEntity);
+        
         List<DepartamentoEntity> departamentosAñadir = new ArrayList<>();
         for(DepartamentoEntity dept: objDocenteEntity.getListaDepartamentos())
         {

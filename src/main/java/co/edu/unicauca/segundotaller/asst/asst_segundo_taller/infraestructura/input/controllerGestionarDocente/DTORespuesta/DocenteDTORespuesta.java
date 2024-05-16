@@ -45,7 +45,7 @@ public class DocenteDTORespuesta
     @Size(min = 7, max = 30, message = "{docente.vinculacion.size}")
     private String vinculacion;
 
-    @Pattern(regexp = "(?:3[0-9]{9})|(?:[1-9][0-9]{8})", message = "{telefono.size.pattern}")
+    //@Pattern(regexp = "(?:3[0-9]{9})|(?:[1-9][0-9]{8})", message = "{telefono.size.pattern}")
     private TelefonoDTORespuesta objTelefono;
     
 

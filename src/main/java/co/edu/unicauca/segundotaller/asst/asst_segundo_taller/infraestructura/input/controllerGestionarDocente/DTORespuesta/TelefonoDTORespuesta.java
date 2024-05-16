@@ -23,7 +23,7 @@ public class TelefonoDTORespuesta
     @NotNull(message = "{telefono.numero.emply}")
     @Size(min = 10, max = 12, message = "{telefono.numero.size}")
     private String numero;
-     private DocenteDTORespuesta objDocente;
+     //private DocenteDTORespuesta objDocente;
     public TelefonoDTORespuesta()
     {}
     

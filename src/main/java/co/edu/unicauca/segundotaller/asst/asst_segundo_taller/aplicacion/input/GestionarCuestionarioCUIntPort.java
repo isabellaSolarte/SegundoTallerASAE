@@ -8,6 +8,7 @@ public interface GestionarCuestionarioCUIntPort
 {
     public Cuestionario crear(Cuestionario objCuestionario);
     public List<Cuestionario> listar();
+    // TODOLISTAR CUESTIONATIO CON PREGUNTAS
 
 }
  
