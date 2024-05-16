@@ -28,7 +28,9 @@ public class CuestionarioRestController {
     
     @PostMapping("/cuestionario")
     public ResponseEntity<CuestionarioDTORespuesta> create(@RequestBody CuestionarioDTOPeticion objCuestionario) {
+        System.out.println(objCuestionario);
         Cuestionario objCuestionarioCrear = objMapeador.mappearDePeticionACuestionario(objCuestionario);
+        System.out.println("mapeado: " + objCuestionarioCrear);
         Cuestionario objCuestionarioCreado = objGestionarCuestionarioCUInt.crear(objCuestionarioCrear);
         ResponseEntity<CuestionarioDTORespuesta> objRespuesta = new ResponseEntity<CuestionarioDTORespuesta>(
                 objMapeador.mappearDeCuestionarioARespuesta(objCuestionarioCreado),

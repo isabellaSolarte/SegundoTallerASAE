@@ -15,20 +15,15 @@ public class Pregunta
     
     private int idpregunta;
     private String enunciado;
-    private List<Respuesta> respuestas;
+  
     private TipoPregunta objTipoPregunta;
-    private Cuestionario objCuestionario;
     
-    public Pregunta(int idpregunta, String enunciado, List<Respuesta> respuestas, TipoPregunta objTipoPregunta, Cuestionario objCuestionario) {
+    public Pregunta(int idpregunta, String enunciado, List<Respuesta> respuestas, TipoPregunta objTipoPregunta) {
         this.idpregunta = idpregunta;
         this.enunciado = enunciado;
-        this.respuestas = respuestas;
         this.objTipoPregunta = objTipoPregunta;
-        this.objCuestionario = objCuestionario;
-        this.respuestas = new ArrayList<>();
     }
     public Pregunta()
     {
-        this.respuestas = new ArrayList<>();
     }
 }
