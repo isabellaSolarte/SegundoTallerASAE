@@ -56,7 +56,7 @@ public class GestionarCuestionarioGatewayImplAdapter implements GestionarCuestio
 
 	@Override
 	public List<Cuestionario> listar() {
-		Iterable<CuestionarioEntity> lista = this.objCuestionarioRepository.findAll(); //TODO-cambiar
+		Iterable<CuestionarioEntity> lista = this.objCuestionarioRepository.findAllByOrderByTituloAsc(); 
         List<Cuestionario> listaObtenida = this.cuestionarioModelMapper.map(lista, new org.modelmapper.TypeToken<List<Cuestionario>>() {
         }.getType());
         return listaObtenida;

@@ -1,0 +1,57 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "ASAE",
+    "collectionId": "8c0f267d-61e2-4954-93f7-2e448a28c3d9",
+    "dateExported": "2024-05-17T22:28:21.417Z",
+    "version": "1.2",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "6e7b1d19-8548-45ba-92ee-90871676dd30",
+            "colId": "8c0f267d-61e2-4954-93f7-2e448a28c3d9",
+            "containerId": "",
+            "name": "localhost:5000/api/cuestionarios",
+            "url": "localhost:5000/api/cuestionarios",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-05-17T22:21:47.479Z",
+            "modified": "2024-05-17T22:21:47.479Z",
+            "headers": []
+        },
+        {
+            "_id": "4f57ffcb-52b2-43f5-96b8-21b3b631a409",
+            "colId": "8c0f267d-61e2-4954-93f7-2e448a28c3d9",
+            "containerId": "",
+            "name": "localhost:5000/api/cuestionario",
+            "url": "localhost:5000/api/cuestionario",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-05-17T22:22:33.093Z",
+            "modified": "2024-05-17T22:22:33.093Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\r\n  \"descripcion\": \"Datos medicos de medicos\",\r\n  \"preguntaEntities\": [\r\n    {\r\n      \"enunciado\": \"estado civil\",\r\n      \"objTipoPreguntaEntity\": {\r\n        \"idtipPregunta\": 2\r\n      },\r\n      \"respuestaEntities\": [\r\n        {}\r\n      ]\r\n    }\r\n  ],\r\n  \"titulo\": \"Casa\"\r\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "5911a6c4-e450-42aa-a541-3f0425a1c2e7",
+            "colId": "8c0f267d-61e2-4954-93f7-2e448a28c3d9",
+            "containerId": "",
+            "name": "localhost:5000/api/docente",
+            "url": "localhost:5000/api/docente",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2024-05-17T22:23:24.239Z",
+            "modified": "2024-05-17T22:23:24.239Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\r\n    \"tipoIdentificacion\": \"cedula\",\r\n    \"numeroIdentificacion\": \"4442444444\",\r\n    \"nombres\": \"sara isabel5\",\r\n    \"apellidos\": \"lis mune\",\r\n    \"correo\": \"sisalis.unicauca.edu.co\",\r\n    \"vinculacion\": \"docentesisi\",\r\n    \"objTelefonoEntity\": {\r\n      \"idtelefono\": 123,\r\n      \"tipoTelefono\": \"telefono\",\r\n      \"numero\": \"98765432\"\r\n    },\r\n    \"listaDepartamentos\": [\r\n        {\r\n            \"idDepartamento\": 1,\r\n            \"descripcion\":\"\",\r\n            \"nombre\":\"\"\r\n        }\r\n    ]\r\n}",
+                "form": []
+            }
+        }
+    ],
+    "ref": "m8i2Sq3eKDwLMcOJTwenrxR35LCxmrAeDNu0YerpIWLriNIdN1_HBIaTC3aVQ1tNM3j89qw90VghQbC2Up3njQ"
+}
