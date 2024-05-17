@@ -21,7 +21,7 @@ public class GestionarRespuestaCUAdapter implements GestionarRespuestaCUIntPort
     public Respuesta crear(Respuesta objRespuesta) 
     {
         Respuesta objRespuestaCreada = null;
-        if(this.objGestionarRespuestaGateway.existeRespuestaPorId(objRespuesta.getIdrespuesta()))
+        if(this.objGestionarRespuestaGateway.existeRespuestaPorId(objRespuesta.getIdRespuesta()))
         {
             this.objRespuestaFormateadorResultados
                     .retornarRespuestaErrorEntidadExiste("Error, el id de la respuesta ya existe");

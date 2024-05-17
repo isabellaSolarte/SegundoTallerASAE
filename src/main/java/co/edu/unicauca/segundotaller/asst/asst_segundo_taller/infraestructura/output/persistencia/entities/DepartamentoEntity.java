@@ -5,29 +5,19 @@ package co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.o
 import jakarta.persistence.*;
 import lombok.*;
 
+
+@Entity
 @Getter
 @Setter
-@Entity
-@Builder
-@NoArgsConstructor
 @Table(name = "Departamentos")
 public class DepartamentoEntity {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer iddepartamento;
-
-    @Column(name = "nombredep", nullable = false, length = 30)
+    @Column(name = "iddepartamento")
+    private int iddepartamento;
+    @Column(name = "nombredep",length = 30)
     private String nombre;
-
-    @Column( nullable = false, length = 30)
+    @Column(name = "descripcion",length = 30)
     private String descripcion;
-    
-    public DepartamentoEntity(Integer iddepartamento, String nombre, String descripcion)
-    {
-        this.iddepartamento = iddepartamento;
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-    }
 
 }

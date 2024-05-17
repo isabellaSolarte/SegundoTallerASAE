@@ -1,36 +1,20 @@
 package co.edu.unicauca.segundotaller.asst.asst_segundo_taller.dominio.modelos;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@AllArgsConstructor 
+@NoArgsConstructor
 public class Docente extends Persona
 {
     private String correo;
     private String vinculacion;
-    private Telefono objTelefono;
-    private List<Respuesta> respuestas;
-    private List<Departamento> listaDepartamentos;
+    private Telefono objTelefonoEntity;
+    private List<Departamento> departamentoEntities;
+    private List<Respuesta> respuestaEntities;
 
-    public Docente()
-    {
-        this.respuestas = new ArrayList<>();
-        this.listaDepartamentos = new ArrayList<>();
-    }
-    public Docente( String tipoIdentificacion, String numeroIdentificacion, String nombres,
-    String apellidos, String correo, String vinculacion) 
-    {
-        super( tipoIdentificacion, numeroIdentificacion, nombres, apellidos);
-        this.correo = correo;
-        this.vinculacion = vinculacion;
-    }
-    public Docente( String tipoIdentificacion, String numeroIdentificacion, String nombres,
-                    String apellidos, String correo, String vinculacion, Telefono telefono) {
-        super( tipoIdentificacion, numeroIdentificacion, nombres, apellidos);
-        this.correo = correo;
-        this.vinculacion = vinculacion;
-        this.objTelefono=telefono;
-    }
 }

@@ -1,23 +1,17 @@
 package co.edu.unicauca.segundotaller.asst.asst_segundo_taller.dominio.modelos;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Telefono 
 
 {
-    
-    private Integer idtelefono;
-    private String tipotelefono;
+    private int idTelefono;
+    private String tipoTelefono;
     private String numero;
-    private Docente objDocente;
-    public Telefono()
-    {}
-     
-    public Telefono(Integer idtelefono, String tipotelefono, String numero)
-    {
-        this.idtelefono = idtelefono;
-        this.tipotelefono = tipotelefono;
-        this.numero = numero;
-    }
+    private Docente objPersona;
 }

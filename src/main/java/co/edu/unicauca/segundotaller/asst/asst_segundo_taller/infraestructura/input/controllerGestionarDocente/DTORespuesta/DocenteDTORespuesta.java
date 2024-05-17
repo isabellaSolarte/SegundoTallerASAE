@@ -2,6 +2,8 @@ package co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.i
 
 import java.util.List;
 
+import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.input.controllerGestionarDocente.DTOPeticion.DepartamentoDTOPeticion;
+import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.input.controllerGestionarDocente.DTOPeticion.TelefonoDTOPeticion;
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.input.controllerGestionarRespuesta.DTOPeticion.RespuestaDTOPeticion;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
@@ -17,15 +19,15 @@ import lombok.Setter;
 public class DocenteDTORespuesta 
 {
     @NotNull(message = "{docente.iddocente.emply}")
-    private int idpersona;
+    private int idPersona;
 
     @NotNull(message = "{docente.tipoidentificacion.emply}")
     @Size(min = 5, max = 45, message = "{docente.tipoidentificacion.size}")
-    private String tipoidentificacion;
+    private String tipoIdentificacion;
 
     @NotNull(message = "{docente.numeroidentificacion.emply}")
     @Size(min = 1, max = 10, message = "{docente.numeroidentificacion.size}")
-    private String numeroidentificacion;
+    private String numeroIdentificacion;
 
     @NotNull(message = "{docente.nombres.emply}")
     @Size(min = 3, max = 20, message = "{docente.nombres.size}")
@@ -37,20 +39,19 @@ public class DocenteDTORespuesta
 
     @NotNull(message = "{docente.correo.emply}")
     @Size(min = 10, max = 30, message = "{docente.correo.size}")
-    private String correo;
+    private String correo ;
 
-    private List<RespuestaDTOPeticion> respuestas; 
+    private List<RespuestaDTOPeticion> respuestaEntities;
 
     @NotNull(message = "{docente.vinculacion.emply}")
     @Size(min = 7, max = 30, message = "{docente.vinculacion.size}")
     private String vinculacion;
 
     //@Pattern(regexp = "(?:3[0-9]{9})|(?:[1-9][0-9]{8})", message = "{telefono.size.pattern}")
-    private TelefonoDTORespuesta objTelefono;
-    
+    private TelefonoDTOPeticion objTelefonoEntity;
 
     @NotNull(message = "")
-    private List<DepartamentoDTORespuesta> listaDepartamentos;
+    private List<DepartamentoDTOPeticion> departamentoEntities;
     public DocenteDTORespuesta()
     {
         

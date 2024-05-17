@@ -8,34 +8,23 @@ import java.util.List;
 import jakarta.persistence.*;
 import lombok.*;
 
+
+@Entity
 @Getter
 @Setter
-@Entity
-@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "TipoPregunta")
 public class TipoPreguntaEntity {
-    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idtippregunta;
-
-    @Column(nullable = false, length = 30)
+    @Column(name = "idtipPregunta")
+    private  int idtipPregunta;
+    @Column(name = "nombre",length = 30)
     private String nombre;
+    @Column(name = "descripcion",length = 30)
+    private String  descripcion;
 
-    @Column(nullable = false, length = 30)
-    private String descripcion;
-
-    @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy = "objTipoPregunta")
-    private List<PreguntaEntity> listaPregunta;
-
-    public TipoPreguntaEntity(Integer idtippregunta, String nombre, String descripcion, List<PreguntaEntity> listaPregunta) {
-        this.idtippregunta = idtippregunta;
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.listaPregunta = listaPregunta;
-    }
-    public TipoPreguntaEntity(){
-        this.listaPregunta = new ArrayList<>();
-    }
-    
+    @OneToMany(fetch = FetchType.EAGER,mappedBy = "objTipoPreguntaEntity")
+    private List<PreguntaEntity> preguntaEntity;
 }

@@ -10,7 +10,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class DepartamentoDTOPeticion {
      @NotNull(message = "{departamento.iddepartamento.emply}")
-    private int iddepartamento;
+    private int idDepartamento;
 
     @NotNull(message = "{departamento.nombre.emply}")
     @Size(min = 5, max = 25, message = "{departamento.nombre.size}")

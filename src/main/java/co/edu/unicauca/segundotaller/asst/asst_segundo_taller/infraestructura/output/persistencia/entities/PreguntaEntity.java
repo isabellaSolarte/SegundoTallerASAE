@@ -2,43 +2,31 @@ package co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.o
 
 import jakarta.persistence.*;
 import lombok.*;
-
-import java.util.ArrayList;
 import java.util.List;
 
+@Entity
 @Getter
 @Setter
-@Entity
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "Preguntas")
 public class PreguntaEntity {
-    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idpregunta;
+    @Column(name = "idPregunta")
+    private int idpregunta;
 
-    @Column(nullable = false, length = 30)
+    @Column(name = "enunciado",length = 30)
     private String enunciado;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "objPregunta")
-	private List<RespuestaEntity> respuestas;
-
-    @ManyToOne(fetch = FetchType.EAGER,cascade = {CascadeType.PERSIST })
-    @JoinColumn(name="idTipoPregunta", nullable = false)
-    private TipoPreguntaEntity objTipoPregunta;
+    @ManyToOne(cascade = {CascadeType.PERSIST })
+    @JoinColumn(name = "idtipPregunta")
+    private TipoPreguntaEntity objTipoPreguntaEntity;
 
     @ManyToOne
-    @JoinColumn(name = "idCuestionario", nullable = false)
-    private CuestionarioEntity objCuestionario;
+    @JoinColumn(name="idCuestionario", nullable=false)
+    private CuestionarioEntity objCuestionarioEntity;
 
-    public PreguntaEntity(Integer idpregunta, String enunciado, List<RespuestaEntity> respuestas, TipoPreguntaEntity objTipoPregunta, CuestionarioEntity objCuestionario) {
-        this.idpregunta = idpregunta;
-        this.enunciado = enunciado;
-        this.respuestas = respuestas;
-        this.objTipoPregunta = objTipoPregunta;
-        this.objCuestionario = objCuestionario;
-    }
-    public PreguntaEntity (){
-        this.respuestas = new ArrayList<>();
-    }
-
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "objPreguntaEntity")
+    private List<RespuestaEntity> respuestaEntities;
 }

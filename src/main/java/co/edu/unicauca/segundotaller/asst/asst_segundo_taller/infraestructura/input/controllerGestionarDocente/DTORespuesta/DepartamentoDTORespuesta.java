@@ -13,7 +13,7 @@ import lombok.Setter;
 public class DepartamentoDTORespuesta 
 {
     @NotNull(message = "{departamento.iddepartamento.emply}")
-    private int iddepartamento;
+    private int idDepartamento;
 
     @NotNull(message = "{departamento.nombre.emply}")
     @Size(min = 5, max = 25, message = "{departamento.nombre.size}")

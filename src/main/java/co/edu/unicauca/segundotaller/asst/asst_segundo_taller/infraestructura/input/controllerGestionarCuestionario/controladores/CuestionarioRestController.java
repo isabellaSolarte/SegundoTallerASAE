@@ -27,15 +27,13 @@ public class CuestionarioRestController {
     private final CuestionarioMapperInfraestructuraDominio objMapeador;
     
     @PostMapping("/cuestionario")
-    public ResponseEntity<CuestionarioDTORespuesta> create(@RequestBody CuestionarioDTOPeticion objCuestionario) {
-        System.out.println(objCuestionario);
-        Cuestionario objCuestionarioCrear = objMapeador.mappearDePeticionACuestionario(objCuestionario);
-        System.out.println("mapeado: " + objCuestionarioCrear);
-        Cuestionario objCuestionarioCreado = objGestionarCuestionarioCUInt.crear(objCuestionarioCrear);
-        ResponseEntity<CuestionarioDTORespuesta> objRespuesta = new ResponseEntity<CuestionarioDTORespuesta>(
-                objMapeador.mappearDeCuestionarioARespuesta(objCuestionarioCreado),
-                HttpStatus.CREATED);
-        return objRespuesta;
+    public ResponseEntity<CuestionarioDTORespuesta> crear(@RequestBody CuestionarioDTOPeticion objCuestionario) {
+        Cuestionario objCuestionarioCrear=objMapeador.mappearDePeticionACuestionario(objCuestionario);
+        
+        Cuestionario objCuestionarioCreado=objGestionarCuestionarioCUInt.crear(objCuestionarioCrear);
+        return new ResponseEntity<CuestionarioDTORespuesta>(
+            objMapeador.mappearDeCuestionarioARespuesta(objCuestionarioCreado), HttpStatus.CREATED
+        );
     }
     @GetMapping("/cuestionarios")
     public ResponseEntity<List<CuestionarioDTORespuesta>> listar() {

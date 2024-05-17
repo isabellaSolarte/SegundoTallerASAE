@@ -1,7 +1,6 @@
 package co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.output.persistencia.entities;
 
 import lombok.*;
-import java.util.ArrayList;
 import java.util.List;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -13,35 +12,24 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
+@Entity
 @Getter
 @Setter
-@Entity
-@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "Cuestionarios")
-
 public class CuestionarioEntity {
-    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idcuestionario;
+    @Column(name = "idCuestionario")
+    private int idCuestionario;
 
-    @Column( nullable = false, length = 30)
+    @Column(name = "titulo",length = 30)
     private String titulo;
 
-    @Column( nullable = false, length = 30)
+    @Column(name = "descripcion",length = 30)
     private String descripcion;
 
-    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, fetch = FetchType.EAGER, mappedBy = "objCuestionario")
-    private List<PreguntaEntity> preguntas;
-    
-    public CuestionarioEntity(Integer idcuestionario, String titulo, String descripcion, List<PreguntaEntity> preguntas) {
-        this.idcuestionario = idcuestionario;
-        this.titulo = titulo;
-        this.descripcion = descripcion;
-        this.preguntas = preguntas;
-    }
-    public CuestionarioEntity(){
-        this.preguntas = new ArrayList<>();
-    }
-
+    @OneToMany(cascade = {CascadeType.PERSIST,CascadeType.REMOVE},fetch = FetchType.EAGER, mappedBy = "objCuestionarioEntity")
+    private List<PreguntaEntity> preguntaEntities;
 }

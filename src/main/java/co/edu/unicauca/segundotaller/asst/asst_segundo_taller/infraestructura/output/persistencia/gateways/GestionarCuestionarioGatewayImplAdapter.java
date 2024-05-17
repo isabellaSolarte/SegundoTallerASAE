@@ -1,5 +1,6 @@
 package co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.output.persistencia.gateways;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import java.util.Optional;
@@ -33,23 +34,24 @@ public class GestionarCuestionarioGatewayImplAdapter implements GestionarCuestio
 	}
 
 	@Override
-	public Cuestionario guardar(Cuestionario objCuestionario) {
-        CuestionarioEntity objCuestionarioEntity = this.cuestionarioModelMapper.map(objCuestionario, CuestionarioEntity.class);
-        //Asignar las preguntas al cuestionario
-        for (PreguntaEntity pregunta : objCuestionarioEntity.getPreguntas()) {
-            Optional<TipoPreguntaEntity> tipoPregunta = tipoPreguntaRepository.findById(pregunta.getObjTipoPregunta().getIdtippregunta());
-            System.out.println("Tipo de pregunta: "+tipoPregunta.get().getNombre());
-            pregunta.setObjTipoPregunta(tipoPregunta.get());
-            pregunta.setObjCuestionario(objCuestionarioEntity);
-            System.out.println("Pregunta: "+pregunta.getEnunciado());
-            tipoPregunta.get().getListaPregunta().add(pregunta);
+    public Cuestionario guardar(Cuestionario cuestionario) {
+        CuestionarioEntity objCuestionarioaEntity=this.cuestionarioModelMapper.map(cuestionario, CuestionarioEntity.class);
+        List<PreguntaEntity> lista=new ArrayList<>();
+        for(PreguntaEntity preguntas:objCuestionarioaEntity.getPreguntaEntities()){
+            Optional<TipoPreguntaEntity> tipoPregunta=tipoPreguntaRepository.findById(preguntas.getObjTipoPreguntaEntity().getIdtipPregunta());
+            preguntas.setObjTipoPreguntaEntity(tipoPregunta.get());
+            List<PreguntaEntity> existingPreguntas = tipoPregunta.get().getPreguntaEntity();
+            existingPreguntas.add(preguntas);
+            tipoPregunta.get().setPreguntaEntity(existingPreguntas);
+            preguntas.setObjCuestionarioEntity(objCuestionarioaEntity);
+            lista.add(preguntas);
         }
-        
-        CuestionarioEntity objCuestionarioEntityRegistrado = this.objCuestionarioRepository.save(objCuestionarioEntity);
-        System.out.println("Cuestionario guardado: "+objCuestionarioEntityRegistrado.getTitulo());
-        Cuestionario objCuestionarioRespuesta = this.cuestionarioModelMapper.map(objCuestionarioEntityRegistrado, Cuestionario.class);
-        return objCuestionarioRespuesta;
+        objCuestionarioaEntity.setPreguntaEntities(lista);
+        CuestionarioEntity objCuestionarioEntityRegistrado=this.objCuestionarioRepository.save(objCuestionarioaEntity);
+        return this.cuestionarioModelMapper.map(objCuestionarioEntityRegistrado, Cuestionario.class);
+        //return cuestionario;
     }
+
 		
 
 	@Override

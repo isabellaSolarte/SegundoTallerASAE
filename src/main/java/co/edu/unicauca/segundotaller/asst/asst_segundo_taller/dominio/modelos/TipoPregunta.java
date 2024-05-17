@@ -1,30 +1,20 @@
 package co.edu.unicauca.segundotaller.asst.asst_segundo_taller.dominio.modelos;
-
-import java.util.ArrayList;
 import java.util.List;
-
-import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.input.controllerGestionarPregunta.DTOPeticion.PreguntaDTOPeticion;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Data
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class TipoPregunta 
 {
-    private int idtippregunta;
+    private  int idtipPregunta;
     private String nombre;
-    private String descripcion;
-    private List<Pregunta> listaPregunta;
-    public TipoPregunta(Integer idtippregunta, String nombre, String descripcion, List<Pregunta> listaPregunta) {
-        this.idtippregunta = idtippregunta;
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.listaPregunta = listaPregunta;
-    }
-    public TipoPregunta(){
-        this.listaPregunta = new ArrayList<>();
-    }
+    private String  descripcion;
+    private List<Pregunta> preguntaEntity;
 }

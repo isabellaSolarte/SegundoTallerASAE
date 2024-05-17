@@ -6,36 +6,26 @@ import jakarta.persistence.*;
 
 import lombok.*;
 
+@Entity
 @Getter
 @Setter
-@Entity
-@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "Respuesta")
 public class RespuestaEntity {
-    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idrespuesta;
+    @Column(name = "idRespuesta")
+    private int idRespuesta;
 
-    @Column(nullable = false, length = 30)
+    @Column(name = "descripcion",length = 30)
     private String descripcion;
-    
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idPregunta", nullable = false)
-    private PreguntaEntity objPregunta;
 
     @ManyToOne
-    @JoinColumn(name = "idDocente", nullable = false)
+    @JoinColumn(name = "objDocente")
     private DocenteEntity objDocente;
-    public RespuestaEntity() {
 
-    }
-
-    public RespuestaEntity(Integer idrespuesta, String descripcion, PreguntaEntity objPregunta, DocenteEntity objDocente) {
-        this.idrespuesta = idrespuesta;
-        this.descripcion = descripcion;
-        this.objPregunta = objPregunta;
-        this.objDocente = objDocente;
-    }
-
+    @ManyToOne
+    @JoinColumn(name = "idpregunta",nullable = false)
+    private PreguntaEntity objPreguntaEntity;
 }
