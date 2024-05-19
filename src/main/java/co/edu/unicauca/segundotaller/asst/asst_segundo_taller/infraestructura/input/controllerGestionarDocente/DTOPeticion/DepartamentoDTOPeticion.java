@@ -12,13 +12,6 @@ public class DepartamentoDTOPeticion {
      @NotNull(message = "{departamento.iddepartamento.emply}")
     private int idDepartamento;
 
-    @NotNull(message = "{departamento.nombre.emply}")
-    @Size(min = 5, max = 25, message = "{departamento.nombre.size}")
-    private String nombre;
-
-    @NotNull(message = "{departamento.descripcion.emply}")
-    @Size(min = 5, max = 35, message = "{departamento.descripcion.size}")
-    private String descripcion;
 
     public DepartamentoDTOPeticion()
     {}

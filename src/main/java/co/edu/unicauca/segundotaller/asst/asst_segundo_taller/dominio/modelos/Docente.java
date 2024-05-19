@@ -14,7 +14,7 @@ public class Docente extends Persona
     private String correo;
     private String vinculacion;
     private Telefono objTelefonoEntity;
-    private List<Departamento> departamentoEntities;
+    private List<Departamento> listaDepartamentos;
     private List<Respuesta> respuestaEntities;
 
 }

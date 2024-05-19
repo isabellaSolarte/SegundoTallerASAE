@@ -50,7 +50,7 @@ public class DocenteDTORespuesta
     private TelefonoDTOPeticion objTelefonoEntity;
 
     @NotNull(message = "")
-    private List<DepartamentoDTOPeticion> departamentoEntities;
+    private List<DepartamentoDTORespuesta> listaDepartamentos;
     public DocenteDTORespuesta()
     {
         
