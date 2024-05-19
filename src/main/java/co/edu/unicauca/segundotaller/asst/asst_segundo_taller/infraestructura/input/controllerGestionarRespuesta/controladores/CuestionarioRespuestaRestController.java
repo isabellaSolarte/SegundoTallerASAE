@@ -31,11 +31,10 @@ public class CuestionarioRespuestaRestController
     @PostMapping("/respuesta")
     public ResponseEntity<PreguntaDTORespuesta> crear(@RequestBody PeticionCuestionarioResueltoDTO objPeticionDTO) 
     {
-        Pregunta objRespuesta = objMapeador.mappearDePeticionARespuesta(objPeticionDTO.getObjPreguntaDTO());
+        Pregunta objRespuesta = objMapeador.mappearDePeticionARespuesta(objPeticionDTO.getObjPregunta());
         Cuestionario objCuestionario = objMapeador.mappearDePeticionACuestionario(objPeticionDTO.getObjCuestionario());
         Docente objDocente = objMapeador.mappearDePeticionADocente(objPeticionDTO.getObjDocente());
         Pregunta objPregunta = objGestionarRespuestaCUInt.crear(objDocente,objCuestionario,objRespuesta);
-        
         return new ResponseEntity<PreguntaDTORespuesta>(
             objMapeador.mappearDeRespuestaCARespuesta(objPregunta), HttpStatus.CREATED
         );

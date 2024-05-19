@@ -20,14 +20,15 @@ public class GestionarRespuestaCUAdapter implements GestionarRespuestaCUIntPort
     }
     @Override
     public Pregunta crear(Docente docente, Cuestionario cuestionario, Pregunta pregunta) {
-        Pregunta preguntaCreada=null;
+        Pregunta preguntaN=null;
 
         if(this.objGestionarRespuestaGateway.validarDocenteCuestionario(docente,cuestionario)){
             this.objRespuestaFormateadorResultados.retornarRespuestaErrorReglaDeNegocio("Error, El docente ya respondio el cuestionario");
         }
-        preguntaCreada=this.objGestionarRespuestaGateway.guardar(pregunta,cuestionario,docente);
+        
+        preguntaN=this.objGestionarRespuestaGateway.guardar(pregunta,cuestionario,docente);
 
-        return preguntaCreada;
+        return preguntaN;
     }
 
     @Override

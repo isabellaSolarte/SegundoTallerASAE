@@ -50,7 +50,7 @@ public class GestionarRespuestaGatewayImplAdapter implements GestionarRespuestaG
         Optional<PreguntaEntity> objPreguntaEntity = this.objPreguntasRepository.findById(pregunta.getIdpregunta());
         Optional<DocenteEntity> objDocenteEntity = this.objDocentesRepository.findById(docente.getIdPersona());
         List<RespuestaEntity> listaAux = objDocenteEntity.get().getRespuestas();
-        
+        System.out.println(objDocenteEntity.get().getNombres()+"id"+objDocenteEntity.get().getApellidos());
         for(Respuesta respuesta:pregunta.getRespuestaEntities()){
             RespuestaEntity respuestaEntity=this.respuestaModelMapper.map(respuesta,RespuestaEntity.class);
             respuestaEntity.setObjPreguntaEntity(objPreguntaEntity.get());
@@ -65,7 +65,7 @@ public class GestionarRespuestaGatewayImplAdapter implements GestionarRespuestaG
 
     @Override
     public boolean validarDocenteCuestionario(Docente docente, Cuestionario cuestionario) 
-    {
+    {   
         Optional<DocenteEntity> docenteEntity=this.objDocentesRepository.findById(docente.getIdPersona());
         Optional<CuestionarioEntity> cuestionarioEntity=this.objCuestionariosRepository.findById(cuestionario.getIdCuestionario());
         List<RespuestaEntity> lista=docenteEntity.get().getRespuestas();

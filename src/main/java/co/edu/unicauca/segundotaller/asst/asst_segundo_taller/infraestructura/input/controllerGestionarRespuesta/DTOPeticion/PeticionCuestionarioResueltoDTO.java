@@ -11,6 +11,5 @@ public class PeticionCuestionarioResueltoDTO
 {
     private CuestionarioDTOPeticion objCuestionario;
     private DocenteDTOPeticion objDocente;
-    private PreguntaDTOPeticion objPreguntaDTO;
-    private RespuestaDTOPeticion objRespuesta;
+    private PreguntaDTOPeticion objPregunta;
 }
