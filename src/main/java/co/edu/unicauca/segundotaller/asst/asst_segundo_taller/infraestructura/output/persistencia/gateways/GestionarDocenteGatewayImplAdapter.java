@@ -9,6 +9,7 @@ import org.modelmapper.TypeToken;
 import org.springframework.stereotype.Service;
 
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.aplicacion.output.GestionarDocenteGatewayIntPort;
+import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.dominio.modelos.Departamento;
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.dominio.modelos.Docente;
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.output.persistencia.entities.DepartamentoEntity;
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.output.persistencia.entities.DocenteEntity;
@@ -37,25 +38,24 @@ public class GestionarDocenteGatewayImplAdapter implements GestionarDocenteGatew
     @Override
     public Docente guardar(Docente objDocente) 
     {
-        
         DocenteEntity objDocenteEntity = this.docenteModelMapper.map(objDocente, DocenteEntity.class);
         TelefonoEntity telefonoEntity = docenteModelMapper.map(objDocente.getObjTelefonoEntity(),TelefonoEntity.class);
 
         telefonoEntity.setObjDocente(objDocenteEntity);
         objDocenteEntity.setObjTelefono(telefonoEntity);
-        
         List<DepartamentoEntity> departamentosAñadir = new ArrayList<>();
-        for(DepartamentoEntity dept: objDocenteEntity.getListaDepartamentos())
+        for(Departamento dept: objDocente.getListaDepartamentos())
         {
-            Optional<DepartamentoEntity> optionDept= objDepartamentosRepository.findById(dept.getIddepartamento());
-            DepartamentoEntity dpEntity = optionDept.orElseThrow(() -> new EntityNotFoundException("TipoPregunta not found"));
-
-            
+            Optional<DepartamentoEntity> optionDept= objDepartamentosRepository.findById(dept.getIdDepartamento());
+            DepartamentoEntity dpEntity = optionDept.orElseThrow(() -> new EntityNotFoundException("Dept not found"));            
             departamentosAñadir.add(dpEntity);
             
         }
         objDocenteEntity.setListaDepartamentos(departamentosAñadir);
+
         DocenteEntity objDocenteEntityRegistrado = this.objDocenteRepository.save(objDocenteEntity);
+        System.out.println("NO ENTROOOOO"+objDocenteEntityRegistrado.getListaDepartamentos().get(0).getDescripcion());
+
         Docente objDocenteRespuesta = this.docenteModelMapper.map(objDocenteEntityRegistrado, Docente.class);
         return objDocenteRespuesta;
     }
