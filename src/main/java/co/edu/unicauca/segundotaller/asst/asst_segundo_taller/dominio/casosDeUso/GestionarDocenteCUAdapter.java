@@ -43,5 +43,13 @@ public class GestionarDocenteCUAdapter implements GestionarDocenteCUIntPort
         List<Docente> listaObtenida = objGestionarDocenteGateway.listar();
         return listaObtenida;
     }
+
+    @Override
+    public Docente buscarPorId(Integer id) {
+        if(!this.objGestionarDocenteGateway.existeUsuarioPorId(id)){
+            this.objDocenteFormateadorResultados.retornarDocenteNoExiste("Error, no se encuentra en el sistema un docente con el codigo");
+        }
+        return this.objGestionarDocenteGateway.buscarPorId(id);
+    }
     
 }

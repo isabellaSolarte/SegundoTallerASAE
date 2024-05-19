@@ -8,4 +8,5 @@ public interface GestionarDocenteCUIntPort
 {
     public Docente crear(Docente objDocente);
     public List<Docente> listar();
+    public Docente buscarPorId(Integer id);
 }

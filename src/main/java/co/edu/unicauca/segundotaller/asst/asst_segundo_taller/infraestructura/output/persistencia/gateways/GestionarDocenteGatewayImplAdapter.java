@@ -80,5 +80,12 @@ public class GestionarDocenteGatewayImplAdapter implements GestionarDocenteGatew
     {
         return this.objDocenteRepository.existeUsuarioPorCodigo(id) == 1;
     }
+
+
+    @Override
+    public Docente buscarPorId(Integer id) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'buscarPorId'");
+    }
     
 }

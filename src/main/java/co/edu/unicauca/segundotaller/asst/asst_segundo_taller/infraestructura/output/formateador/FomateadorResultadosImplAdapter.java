@@ -20,5 +20,11 @@ public class FomateadorResultadosImplAdapter implements ExcepcionFormateadorResu
         ReglaNegocioExcepcion objException = new ReglaNegocioExcepcion(mensaje);
         throw objException;
     }
+
+    @Override
+    public void retornarDocenteNoExiste(String mensaje) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'retornarDocenteNoExiste'");
+    }
     
 }

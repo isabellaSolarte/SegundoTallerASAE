@@ -4,4 +4,5 @@ public interface ExcepcionFormateadorResultadosIntPort
 {
     public void retornarRespuestaErrorEntidadExiste(String mensaje);
     public void retornarRespuestaErrorReglaDeNegocio(String mensaje);
+    public void retornarDocenteNoExiste(String mensaje);
 }

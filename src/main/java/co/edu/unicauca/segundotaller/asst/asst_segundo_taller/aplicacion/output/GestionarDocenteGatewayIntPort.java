@@ -10,4 +10,5 @@ public interface GestionarDocenteGatewayIntPort
     public boolean existeUsuarioPorCodigo(String id);
     public Docente guardar(Docente objDocente);
     public List<Docente> listar();
+    public Docente buscarPorId(Integer id);
 }
