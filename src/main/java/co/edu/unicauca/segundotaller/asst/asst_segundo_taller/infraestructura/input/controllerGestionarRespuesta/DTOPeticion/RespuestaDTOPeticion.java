@@ -1,6 +1,5 @@
 package co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.input.controllerGestionarRespuesta.DTOPeticion;
 
-import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.dominio.modelos.Docente;
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.input.controllerGestionarCuestionario.DTOPeticion.PreguntaDTOPeticion;
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.input.controllerGestionarDocente.DTOPeticion.DocenteDTOPeticion;
 import jakarta.validation.constraints.NotNull;
@@ -15,13 +14,11 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class RespuestaDTOPeticion {
+public class RespuestaDTOPeticion 
+{
     private int idRespuesta;
 
     @NotNull(message = "{respuesta.descripcion.emply}")
     @Size(min = 3, max = 400, message = "{respuesta.descripcion.size}")
     private String descripcion;
-    private DocenteDTOPeticion objUsuario;
-    private PreguntaDTOPeticion idPregunta;
-   
 }

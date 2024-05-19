@@ -1,8 +1,5 @@
 package co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.output.persistencia.entities;
 
-
-
-import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.*;

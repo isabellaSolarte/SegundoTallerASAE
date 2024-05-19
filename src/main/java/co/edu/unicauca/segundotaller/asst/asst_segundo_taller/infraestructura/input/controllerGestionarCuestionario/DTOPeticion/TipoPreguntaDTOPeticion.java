@@ -2,7 +2,6 @@ package co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.i
 
 import java.util.List;
 
-import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.dominio.modelos.Pregunta;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

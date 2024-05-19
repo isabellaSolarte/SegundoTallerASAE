@@ -1,11 +1,12 @@
 package co.edu.unicauca.segundotaller.asst.asst_segundo_taller.dominio.casosDeUso;
 
-import java.util.List;
 
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.aplicacion.input.GestionarRespuestaCUIntPort;
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.aplicacion.output.ExcepcionFormateadorResultadosIntPort;
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.aplicacion.output.GestionarRespuestaGatewayIntPort;
-import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.dominio.modelos.Respuesta;
+import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.dominio.modelos.Cuestionario;
+import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.dominio.modelos.Docente;
+import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.dominio.modelos.Pregunta;
 
 public class GestionarRespuestaCUAdapter implements GestionarRespuestaCUIntPort
 {
@@ -18,25 +19,20 @@ public class GestionarRespuestaCUAdapter implements GestionarRespuestaCUIntPort
         this.objRespuestaFormateadorResultados = objRespuestaFormateadorResultados;
     }
     @Override
-    public Respuesta crear(Respuesta objRespuesta) 
-    {
-        Respuesta objRespuestaCreada = null;
-        if(this.objGestionarRespuestaGateway.existeRespuestaPorId(objRespuesta.getIdRespuesta()))
-        {
-            this.objRespuestaFormateadorResultados
-                    .retornarRespuestaErrorEntidadExiste("Error, el id de la respuesta ya existe");
-        }else
-        {
-            objRespuestaCreada = this.objGestionarRespuestaGateway.guardar(objRespuesta);
+    public Pregunta crear(Docente docente, Cuestionario cuestionario, Pregunta pregunta) {
+        Pregunta preguntaCreada=null;
+
+        if(this.objGestionarRespuestaGateway.validarDocenteCuestionario(docente,cuestionario)){
+            this.objRespuestaFormateadorResultados.retornarRespuestaErrorReglaDeNegocio("Error, El docente ya respondio el cuestionario");
         }
-        return objRespuestaCreada;
+        preguntaCreada=this.objGestionarRespuestaGateway.guardar(pregunta,cuestionario,docente);
+
+        return preguntaCreada;
     }
 
     @Override
-    public List<Respuesta> listar() 
-    {
-        List<Respuesta> listaObtenida = objGestionarRespuestaGateway.listar();
-        return listaObtenida;
+    public Docente listar(int idDocente) {
+        return this.objGestionarRespuestaGateway.obtenerDocenteCuestionario(idDocente);
     }
     
 }

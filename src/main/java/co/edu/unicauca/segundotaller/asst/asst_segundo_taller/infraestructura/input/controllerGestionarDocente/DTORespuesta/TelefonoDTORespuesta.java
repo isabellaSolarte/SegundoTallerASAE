@@ -1,6 +1,5 @@
 package co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.input.controllerGestionarDocente.DTORespuesta;
 
-import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.input.controllerGestionarDocente.DTOPeticion.DocenteDTOPeticion;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
