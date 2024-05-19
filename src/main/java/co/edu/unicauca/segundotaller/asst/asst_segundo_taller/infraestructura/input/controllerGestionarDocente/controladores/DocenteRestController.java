@@ -47,9 +47,13 @@ public class DocenteRestController
         return objRespuesta;
     }
 
-    /*  @GetMapping("/docentes/{id}")
+    @GetMapping("/docentes/{id}")
     public ResponseEntity<DocenteDTORespuesta> listarDocentePorId(@PathVariable Integer id) {
-        return new String();
-    }*/
+        Docente objDocente = objGestionarDocenteCUInt.buscarPorId(id);
+        ResponseEntity<DocenteDTORespuesta> objRespuesta = new ResponseEntity<DocenteDTORespuesta>(
+                objMapeador.mappearDeDocenteARespuesta(objDocente),
+                HttpStatus.OK);
+        return objRespuesta;
+    }
     
 }
