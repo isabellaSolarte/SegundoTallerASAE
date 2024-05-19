@@ -47,10 +47,10 @@ public class GestionarRespuestaGatewayImplAdapter implements GestionarRespuestaG
     @Override
     public Pregunta guardar(Pregunta pregunta, Cuestionario cuestionario, Docente docente) 
     {
+        System.out.println("LLEGOOOOOO");
         Optional<PreguntaEntity> objPreguntaEntity = this.objPreguntasRepository.findById(pregunta.getIdpregunta());
         Optional<DocenteEntity> objDocenteEntity = this.objDocentesRepository.findById(docente.getIdPersona());
         List<RespuestaEntity> listaAux = objDocenteEntity.get().getRespuestas();
-        System.out.println(objDocenteEntity.get().getNombres()+"id"+objDocenteEntity.get().getApellidos());
         for(Respuesta respuesta:pregunta.getRespuestaEntities()){
             RespuestaEntity respuestaEntity=this.respuestaModelMapper.map(respuesta,RespuestaEntity.class);
             respuestaEntity.setObjPreguntaEntity(objPreguntaEntity.get());

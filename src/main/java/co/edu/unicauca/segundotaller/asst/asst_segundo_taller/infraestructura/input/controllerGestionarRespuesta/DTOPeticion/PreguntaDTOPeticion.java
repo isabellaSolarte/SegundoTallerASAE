@@ -16,7 +16,7 @@ public class PreguntaDTOPeticion
     private int idpregunta;
 
     @NotNull(message = "{cuestionario.preguntas.emply}")
-    private List<RespuestaDTOPeticion> respuestas;
+    private List<RespuestaDTOPeticion> respuestaEntities;
     public PreguntaDTOPeticion(){}
 }
 

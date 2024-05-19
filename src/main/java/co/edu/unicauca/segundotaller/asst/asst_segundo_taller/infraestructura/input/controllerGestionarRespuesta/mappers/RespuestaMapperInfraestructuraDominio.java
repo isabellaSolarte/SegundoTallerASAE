@@ -22,7 +22,7 @@ public interface RespuestaMapperInfraestructuraDominio
     DocenteDTORespuesta mappearDeRespuestaCARespuesta(Docente objDocente);
     List<RespuestaDTORespuesta> mappearDeRespuestaCARespuesta(List<Respuesta> respuestas);
     Cuestionario mappearDePeticionACuestionario(CuestionarioDTOPeticion peticion);
-     @Mappings({
+    @Mappings({
         @Mapping(source = "idPersona", target = "idPersona")
     })
     Docente mappearDePeticionADocente(DocenteDTOPeticion peticion);
