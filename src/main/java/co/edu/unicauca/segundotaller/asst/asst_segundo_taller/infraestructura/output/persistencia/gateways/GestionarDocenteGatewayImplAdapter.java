@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.aplicacion.output.GestionarDocenteGatewayIntPort;
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.dominio.modelos.Departamento;
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.dominio.modelos.Docente;
+import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.dominio.modelos.Respuesta;
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.output.persistencia.entities.DepartamentoEntity;
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.output.persistencia.entities.DocenteEntity;
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.output.persistencia.entities.TelefonoEntity;
@@ -54,7 +55,6 @@ public class GestionarDocenteGatewayImplAdapter implements GestionarDocenteGatew
         objDocenteEntity.setListaDepartamentos(departamentosAñadir);
 
         DocenteEntity objDocenteEntityRegistrado = this.objDocenteRepository.save(objDocenteEntity);
-        System.out.println("NO ENTROOOOO"+objDocenteEntityRegistrado.getListaDepartamentos().get(0).getDescripcion());
 
         Docente objDocenteRespuesta = this.docenteModelMapper.map(objDocenteEntityRegistrado, Docente.class);
         return objDocenteRespuesta;
@@ -79,13 +79,6 @@ public class GestionarDocenteGatewayImplAdapter implements GestionarDocenteGatew
     public boolean existeUsuarioPorCodigo(String id)
     {
         return this.objDocenteRepository.existeUsuarioPorCodigo(id) == 1;
-    }
-
-    @Override
-    public Docente buscarPorId(Integer id) {
-        DocenteEntity objDocenteEntity = this.objDocenteRepository.findById(id).get();
-        Docente response = this.docenteModelMapper.map(objDocenteEntity, Docente.class);
-        return response;
     }
     
 }

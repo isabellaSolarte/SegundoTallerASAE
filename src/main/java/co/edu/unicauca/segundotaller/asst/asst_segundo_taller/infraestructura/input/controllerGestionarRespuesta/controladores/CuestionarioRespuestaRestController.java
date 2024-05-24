@@ -4,6 +4,7 @@ import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,9 +15,12 @@ import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.aplicacion.input.G
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.dominio.modelos.Cuestionario;
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.dominio.modelos.Docente;
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.dominio.modelos.Pregunta;
+import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.dominio.modelos.Respuesta;
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.input.controllerGestionarCuestionario.DTORespuesta.PreguntaDTORespuesta;
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.input.controllerGestionarDocente.DTORespuesta.DocenteDTORespuesta;
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.input.controllerGestionarRespuesta.DTOPeticion.PeticionCuestionarioResueltoDTO;
+import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.input.controllerGestionarRespuesta.DTORespuesta.DocenteCUDTORespuesta;
+import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.input.controllerGestionarRespuesta.DTORespuesta.RespuestasDocenteDTORespuesta;
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.input.controllerGestionarRespuesta.mappers.RespuestaMapperInfraestructuraDominio;
 import lombok.RequiredArgsConstructor;
 
@@ -44,6 +48,15 @@ public class CuestionarioRespuestaRestController
     public ResponseEntity<DocenteDTORespuesta> listar(@RequestParam int id){
         return new ResponseEntity<DocenteDTORespuesta>(
             objMapeador.mappearDeRespuestaCARespuesta(this.objGestionarRespuestaCUInt.listar(id)),
+                HttpStatus.OK
+        );
+    }
+    
+    @GetMapping("/respuestasDocente/{id}")
+    public ResponseEntity<DocenteCUDTORespuesta> listarDocenteRespuestaPorId(@PathVariable Integer id) {
+        this.objGestionarRespuestaCUInt.buscarRespuestaPorIdDocente(id); //metodo para listar las respuestas de un docente
+        return new ResponseEntity<DocenteCUDTORespuesta>(
+            objMapeador.mappearDeRespuestaCURespuesta(this.objGestionarRespuestaCUInt.buscarPorId(id)),
                 HttpStatus.OK
         );
     }

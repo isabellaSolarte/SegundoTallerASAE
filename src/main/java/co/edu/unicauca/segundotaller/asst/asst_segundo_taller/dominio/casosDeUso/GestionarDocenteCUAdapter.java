@@ -6,6 +6,7 @@ import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.aplicacion.input.G
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.aplicacion.output.ExcepcionFormateadorResultadosIntPort;
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.aplicacion.output.GestionarDocenteGatewayIntPort;
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.dominio.modelos.Docente;
+import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.dominio.modelos.Respuesta;
 
 public class GestionarDocenteCUAdapter implements GestionarDocenteCUIntPort
 {
@@ -44,12 +45,5 @@ public class GestionarDocenteCUAdapter implements GestionarDocenteCUIntPort
         return listaObtenida;
     }
 
-    @Override
-    public Docente buscarPorId(Integer id) {
-        if(!this.objGestionarDocenteGateway.existeUsuarioPorId(id)){
-            this.objDocenteFormateadorResultados.retornarDocenteNoExiste("Error, no se encuentra en el sistema un docente con el codigo");
-        }
-        return this.objGestionarDocenteGateway.buscarPorId(id);
-    }
     
 }

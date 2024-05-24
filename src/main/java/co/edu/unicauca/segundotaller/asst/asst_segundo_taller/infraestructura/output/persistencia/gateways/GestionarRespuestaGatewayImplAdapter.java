@@ -2,7 +2,9 @@ package co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.o
 
 import java.util.List;
 import java.util.Optional;
+
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.stereotype.Service;
 
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.aplicacion.output.GestionarRespuestaGatewayIntPort;
@@ -47,7 +49,6 @@ public class GestionarRespuestaGatewayImplAdapter implements GestionarRespuestaG
     @Override
     public Pregunta guardar(Pregunta pregunta, Cuestionario cuestionario, Docente docente) 
     {
-        System.out.println("LLEGOOOOOO");
         Optional<PreguntaEntity> objPreguntaEntity = this.objPreguntasRepository.findById(pregunta.getIdpregunta());
         Optional<DocenteEntity> objDocenteEntity = this.objDocentesRepository.findById(docente.getIdPersona());
         List<RespuestaEntity> listaAux = objDocenteEntity.get().getRespuestas();
@@ -84,6 +85,20 @@ public class GestionarRespuestaGatewayImplAdapter implements GestionarRespuestaG
     {
         Optional<DocenteEntity> docenteEntity=this.objDocentesRepository.findById(codigo);
         return this.respuestaModelMapper.map(docenteEntity.get(),Docente.class);
+    }
+
+    @Override
+    public Docente buscarPorId(Integer id) {
+        Optional<DocenteEntity> docenteEntity=this.objDocentesRepository.findById(id);
+        return this.respuestaModelMapper.map(docenteEntity.get(),Docente.class);
+    }
+
+    @Override
+    public List<Respuesta> buscarRespuestaPorIdDocente(Integer id) {
+        Iterable<RespuestaEntity> respuestas = this.objRespuestasRepository.findByidDocente(id);
+        List<Respuesta> listaObtenida = this.respuestaModelMapper.map(respuestas, new TypeToken<List<Respuesta>>() {
+        }.getType());
+        return listaObtenida;
     }
     
 }

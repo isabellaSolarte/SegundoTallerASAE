@@ -16,6 +16,7 @@ import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.dominio.modelos.Do
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.input.controllerGestionarDocente.DTOPeticion.DocenteDTOPeticion;
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.input.controllerGestionarDocente.DTORespuesta.DocenteDTORespuesta;
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.input.controllerGestionarDocente.mappers.DocenteMapperInfraestructuraDominio;
+import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.input.controllerGestionarRespuesta.DTORespuesta.RespuestasDocenteDTORespuesta;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -43,15 +44,6 @@ public class DocenteRestController
     public ResponseEntity<List<DocenteDTORespuesta>> listar() {
         ResponseEntity<List<DocenteDTORespuesta>> objRespuesta = new ResponseEntity<List<DocenteDTORespuesta>>(
                 objMapeador.mappearDeDocentesARespuesta(this.objGestionarDocenteCUInt.listar()),
-                HttpStatus.OK);
-        return objRespuesta;
-    }
-
-    @GetMapping("/docentes/{id}")
-    public ResponseEntity<DocenteDTORespuesta> listarDocentePorId(@PathVariable Integer id) {
-        Docente objDocente = objGestionarDocenteCUInt.buscarPorId(id);
-        ResponseEntity<DocenteDTORespuesta> objRespuesta = new ResponseEntity<DocenteDTORespuesta>(
-                objMapeador.mappearDeDocenteARespuesta(objDocente),
                 HttpStatus.OK);
         return objRespuesta;
     }

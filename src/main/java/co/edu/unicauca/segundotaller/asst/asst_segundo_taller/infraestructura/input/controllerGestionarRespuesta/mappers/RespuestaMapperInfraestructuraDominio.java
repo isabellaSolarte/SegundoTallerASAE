@@ -10,7 +10,9 @@ import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.in
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.input.controllerGestionarRespuesta.DTOPeticion.CuestionarioDTOPeticion;
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.input.controllerGestionarRespuesta.DTOPeticion.DocenteDTOPeticion;
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.input.controllerGestionarRespuesta.DTOPeticion.PreguntaDTOPeticion;
+import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.input.controllerGestionarRespuesta.DTORespuesta.DocenteCUDTORespuesta;
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.input.controllerGestionarRespuesta.DTORespuesta.RespuestaDTORespuesta;
+import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.input.controllerGestionarRespuesta.DTORespuesta.RespuestasDocenteDTORespuesta;
 
 import java.util.List;
 
@@ -26,4 +28,5 @@ public interface RespuestaMapperInfraestructuraDominio
         @Mapping(source = "idPersona", target = "idPersona")
     })
     Docente mappearDePeticionADocente(DocenteDTOPeticion peticion);
+    DocenteCUDTORespuesta mappearDeRespuestaCURespuesta(Docente objDocente);
 }

@@ -15,5 +15,6 @@ public interface DocenteMapperInfraestructuraDominio
 
     DocenteDTORespuesta mappearDeDocenteARespuesta(Docente objDocente);
 
-    List<DocenteDTORespuesta> mappearDeDocentesARespuesta(List<Docente> docentes);    
+    List<DocenteDTORespuesta> mappearDeDocentesARespuesta(List<Docente> docentes);  
+
 }
