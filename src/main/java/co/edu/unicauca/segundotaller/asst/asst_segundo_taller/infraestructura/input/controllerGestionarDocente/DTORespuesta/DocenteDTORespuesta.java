@@ -2,9 +2,7 @@ package co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.i
 
 import java.util.List;
 
-import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.input.controllerGestionarDocente.DTOPeticion.DepartamentoDTOPeticion;
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.input.controllerGestionarDocente.DTOPeticion.TelefonoDTOPeticion;
-import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.input.controllerGestionarRespuesta.DTOPeticion.RespuestaDTOPeticion;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
@@ -39,8 +37,6 @@ public class DocenteDTORespuesta
     @NotNull(message = "{docente.correo.emply}")
     @Size(min = 10, max = 30, message = "{docente.correo.size}")
     private String correo ;
-
-    private List<RespuestaDTOPeticion> respuestaEntities;
 
     @NotNull(message = "{docente.vinculacion.emply}")
     @Size(min = 7, max = 30, message = "{docente.vinculacion.size}")
