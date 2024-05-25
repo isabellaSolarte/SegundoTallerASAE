@@ -2,6 +2,7 @@ package co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.i
 
 
 
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
@@ -25,6 +26,7 @@ public class TelefonoDTOPeticion
     @Size(min = 10, max = 12, message = "{telefono.numero.size}")
     private String numero;
     
+    @Valid
     private DocenteDTOPeticion objPersona;
     public TelefonoDTOPeticion()
     {}

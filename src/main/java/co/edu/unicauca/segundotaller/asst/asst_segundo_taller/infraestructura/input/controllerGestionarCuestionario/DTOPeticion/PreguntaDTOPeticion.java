@@ -16,16 +16,22 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class PreguntaDTOPeticion {
+public class PreguntaDTOPeticion 
+{
 
     private int idpregunta;
 
     @NotNull(message = "{pregunta.enunciado.emply}")
     @Size(min = 3, max = 400, message = "{pregunta.enunciado.size}")
     private String enunciado;
+
     @Valid
     private TipoPreguntaDTOPeticion objTipoPreguntaEntity;
+
+    @Valid
     private Cuestionario objCuestionario;
+    
+    @Valid
     List<RespuestaDTOPeticion> respuestaEntities;
    
 }

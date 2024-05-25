@@ -16,8 +16,10 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class CuestionarioDTOPeticion {
+public class CuestionarioDTOPeticion 
+{
     private int idCuestionario;
+
     @NotNull(message = "{cuestionario.titulo.emply}")
     @Size(min = 3, max = 100, message = "{cuestionario.titulo.size}")
     private String titulo;
