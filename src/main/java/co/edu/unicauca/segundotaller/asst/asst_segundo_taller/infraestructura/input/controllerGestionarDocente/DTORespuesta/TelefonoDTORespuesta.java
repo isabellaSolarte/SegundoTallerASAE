@@ -1,6 +1,7 @@
 package co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.input.controllerGestionarDocente.DTORespuesta;
 
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
 import lombok.AllArgsConstructor;
@@ -20,9 +21,8 @@ public class TelefonoDTORespuesta
     private String tipoTelefono;
 
     @NotNull(message = "{telefono.numero.emply}")
-    @Size(min = 10, max = 12, message = "{telefono.numero.size}")
+    @Pattern(regexp = "(?:3[0-9]{9})|(?:[1-9][0-9]{8})", message = "{telefono.size.pattern}")
     private String numero;
-     //private DocenteDTORespuesta objDocente;
     public TelefonoDTORespuesta()
     {}
     

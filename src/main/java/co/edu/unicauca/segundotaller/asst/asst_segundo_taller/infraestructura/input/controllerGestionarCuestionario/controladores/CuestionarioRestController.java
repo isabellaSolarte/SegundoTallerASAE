@@ -8,12 +8,18 @@ import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.dominio.modelos.Cu
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.input.controllerGestionarCuestionario.DTOPeticion.CuestionarioDTOPeticion;
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.input.controllerGestionarCuestionario.DTORespuesta.CuestionarioDTORespuesta;
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.input.controllerGestionarCuestionario.mappers.CuestionarioMapperInfraestructuraDominio;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,11 +33,11 @@ public class CuestionarioRestController {
     private final CuestionarioMapperInfraestructuraDominio objMapeador;
     
     @PostMapping("/cuestionario")
-    public ResponseEntity<CuestionarioDTORespuesta> crear(@RequestBody CuestionarioDTOPeticion objCuestionario) {
-        Cuestionario objCuestionarioCrear=objMapeador.mappearDePeticionACuestionario(objCuestionario);
+    public ResponseEntity<CuestionarioDTORespuesta> crear(@Valid @RequestBody CuestionarioDTOPeticion objCuestionario) {
+        Cuestionario objCuestionarioCrear = objMapeador.mappearDePeticionACuestionario(objCuestionario);
         
-        Cuestionario objCuestionarioCreado=objGestionarCuestionarioCUInt.crear(objCuestionarioCrear);
-        return new ResponseEntity<CuestionarioDTORespuesta>(
+        Cuestionario objCuestionarioCreado = objGestionarCuestionarioCUInt.crear(objCuestionarioCrear);
+        return new ResponseEntity<>(
             objMapeador.mappearDeCuestionarioARespuesta(objCuestionarioCreado), HttpStatus.CREATED
         );
     }
@@ -42,6 +48,8 @@ public class CuestionarioRestController {
                 HttpStatus.OK);
         return objRespuesta;
     }
+
+   
 
     
 }

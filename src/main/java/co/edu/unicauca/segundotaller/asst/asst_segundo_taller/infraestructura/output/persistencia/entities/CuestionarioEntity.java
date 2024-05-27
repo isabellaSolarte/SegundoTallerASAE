@@ -24,7 +24,7 @@ public class CuestionarioEntity {
     @Column(name = "idCuestionario")
     private int idCuestionario;
 
-    @Column(name = "titulo",length = 30)
+    @Column(name = "titulo",nullable = false,length = 30)
     private String titulo;
 
     @Column(name = "descripcion",length = 30)

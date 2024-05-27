@@ -17,6 +17,7 @@ import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.in
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.input.controllerGestionarDocente.DTORespuesta.DocenteDTORespuesta;
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.input.controllerGestionarDocente.mappers.DocenteMapperInfraestructuraDominio;
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.input.controllerGestionarRespuesta.DTORespuesta.RespuestasDocenteDTORespuesta;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -30,7 +31,7 @@ public class DocenteRestController
     private final DocenteMapperInfraestructuraDominio objMapeador;
 
     @PostMapping("/docente")
-    public ResponseEntity<DocenteDTORespuesta> create(@RequestBody DocenteDTOPeticion objDocente) {
+    public ResponseEntity<DocenteDTORespuesta> create(@Valid @RequestBody DocenteDTOPeticion objDocente) {
         Docente objDocenteCrear = objMapeador.mappearDePeticionADocente(objDocente);
         Docente objDocenteCreado = objGestionarDocenteCUInt.crear(objDocenteCrear);
 

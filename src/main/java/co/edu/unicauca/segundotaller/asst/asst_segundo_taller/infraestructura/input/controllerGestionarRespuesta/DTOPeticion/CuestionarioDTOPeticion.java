@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor
 public class CuestionarioDTOPeticion 
 {
-    @NotNull(message = "{cuestionario.id.emply}")
+    @NotNull(message = "{cuestionario.idCuestionario.emply}")
     private int idCuestionario;
     public CuestionarioDTOPeticion(){}
 }

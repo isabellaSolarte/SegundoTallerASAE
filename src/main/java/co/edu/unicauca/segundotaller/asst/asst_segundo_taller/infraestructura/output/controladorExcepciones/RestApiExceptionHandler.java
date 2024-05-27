@@ -70,24 +70,22 @@ public class RestApiExceptionHandler {
                 return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
         }
 
-        @ExceptionHandler(MethodArgumentNotValidException.class)
-        public ResponseEntity<Map<String, String>> handleValidationExceptions(MethodArgumentNotValidException ex) {
-                System.out.println("Retornando respuesta con los errores identificados");
-                Map<String, String> errores = new HashMap<>();
-                ex.getBindingResult().getAllErrors().forEach((error) -> {
-                        String campo = ((FieldError) error).getField();
-                        String mensajeDeError = error.getDefaultMessage();
-                        errores.put(campo, mensajeDeError);
-                });
-
-                return new ResponseEntity<Map<String, String>>(errores, HttpStatus.BAD_REQUEST);
-        }
-
         @ResponseStatus(HttpStatus.BAD_REQUEST)
         @ExceptionHandler(ConstraintViolationException.class)
         ResponseEntity<String> handleConstraintViolationException(ConstraintViolationException e) {
                 return new ResponseEntity<>(e.getMessage(),
                                 HttpStatus.BAD_REQUEST);
+        }
+
+        @ExceptionHandler(MethodArgumentNotValidException.class)
+        public ResponseEntity<Map<String, String>> handleValidationExceptions(MethodArgumentNotValidException ex) {
+            Map<String, String> errors = new HashMap<>();
+            ex.getBindingResult().getAllErrors().forEach(error -> {
+                String fieldName = ((FieldError) error).getField();
+                String errorMessage = error.getDefaultMessage();
+                errors.put(fieldName, errorMessage);
+            });
+            return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
         }
 }
 

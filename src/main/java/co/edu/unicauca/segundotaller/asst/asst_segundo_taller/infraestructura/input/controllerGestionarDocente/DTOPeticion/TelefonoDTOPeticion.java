@@ -4,6 +4,7 @@ package co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.i
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
 import lombok.AllArgsConstructor;
@@ -23,7 +24,7 @@ public class TelefonoDTOPeticion
     private String tipoTelefono;
 
     @NotNull(message = "{telefono.numero.emply}")
-    @Size(min = 10, max = 12, message = "{telefono.numero.size}")
+    @Pattern(regexp = "3[0-9]{9}", message = "{telefono.size.pattern}")
     private String numero;
     
     @Valid

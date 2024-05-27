@@ -5,7 +5,9 @@ package co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.i
 import java.util.List;
 
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.input.controllerGestionarRespuesta.DTOPeticion.RespuestaDTOPeticion;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 import lombok.Getter;
@@ -36,7 +38,8 @@ public class DocenteDTOPeticion
     private String apellidos;
 
     @NotNull(message = "{docente.correo.emply}")
-    @Size(min = 10, max = 30, message = "{docente.correo.size}")
+    @Size(min = 5, max = 100, message = "{docente.correo.size}")
+    @Email(message = "{docente.correo.invalid}")
     private String correo ;
 
     private List<RespuestaDTOPeticion> respuestaEntities;
@@ -45,10 +48,10 @@ public class DocenteDTOPeticion
     @Size(min = 7, max = 30, message = "{docente.vinculacion.size}")
     private String vinculacion;
 
-    //@Pattern(regexp = "(?:3[0-9]{9})|(?:[1-9][0-9]{8})", message = "{telefono.size.pattern}")
+    @NotNull(message = "docente.telefono.emply ")
     private TelefonoDTOPeticion objTelefonoEntity;
 
-    @NotNull(message = "")
+    @NotNull(message = "docente.departamento.emply")
     private List<DepartamentoDTOPeticion> listaDepartamentos;
 
     public DocenteDTOPeticion()
