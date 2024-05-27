@@ -5,6 +5,7 @@ package co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.i
 import java.util.List;
 
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.input.controllerGestionarRespuesta.DTOPeticion.RespuestaDTOPeticion;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
@@ -48,9 +49,11 @@ public class DocenteDTOPeticion
     @Size(min = 7, max = 30, message = "{docente.vinculacion.size}")
     private String vinculacion;
 
+    @Valid
     @NotNull(message = "docente.telefono.emply ")
     private TelefonoDTOPeticion objTelefonoEntity;
 
+    @Valid    
     @NotNull(message = "docente.departamento.emply")
     private List<DepartamentoDTOPeticion> listaDepartamentos;
 

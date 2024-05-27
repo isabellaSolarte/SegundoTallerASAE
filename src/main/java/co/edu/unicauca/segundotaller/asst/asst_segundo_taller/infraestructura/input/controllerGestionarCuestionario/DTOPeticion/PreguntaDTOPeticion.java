@@ -25,7 +25,7 @@ public class PreguntaDTOPeticion
     @Size(min = 3, max = 400, message = "{pregunta.enunciado.size}")
     private String enunciado;
 
-    
+    @Valid
     private TipoPreguntaDTOPeticion objTipoPreguntaEntity;
 
     
