@@ -8,7 +8,6 @@ import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.in
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 import lombok.Getter;
@@ -43,6 +42,7 @@ public class DocenteDTOPeticion
     @Email(message = "{docente.correo.invalid}")
     private String correo ;
 
+    @Valid
     private List<RespuestaDTOPeticion> respuestaEntities;
 
     @NotNull(message = "{docente.vinculacion.emply}")

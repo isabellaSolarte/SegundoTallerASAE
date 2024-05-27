@@ -5,6 +5,9 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.validation.constraints.NotNull;
+
+import jakarta.validation.Valid;
+
 import java.util.List;
 
 @Getter
@@ -15,6 +18,7 @@ public class PreguntaDTOPeticion
     @NotNull(message = "{pregunta.id.emply}")
     private int idpregunta;
 
+    @Valid
     @NotNull(message = "{cuestionario.preguntas.emply}")
     private List<RespuestaDTOPeticion> respuestaEntities;
     public PreguntaDTOPeticion(){}
