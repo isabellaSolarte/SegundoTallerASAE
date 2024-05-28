@@ -8,7 +8,7 @@ import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.dominio.modelos.Re
 public interface GestionarDocenteGatewayIntPort 
 {
     public boolean existeUsuarioPorId(Integer integer);
-    public boolean existeUsuarioPorCodigo(String id);
+    public boolean existeUsuarioPorCorreo(String correo);
     public Docente guardar(Docente objDocente);
     public List<Docente> listar();
 }

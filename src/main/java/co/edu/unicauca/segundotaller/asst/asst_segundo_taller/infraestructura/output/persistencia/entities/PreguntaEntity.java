@@ -19,7 +19,7 @@ public class PreguntaEntity {
     @Column(name = "enunciado",length = 30)
     private String enunciado;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST })
+    @ManyToOne(cascade = {CascadeType.PERSIST},fetch = FetchType.EAGER )
     @JoinColumn(name = "idtipPregunta")
     private TipoPreguntaEntity objTipoPreguntaEntity;
 

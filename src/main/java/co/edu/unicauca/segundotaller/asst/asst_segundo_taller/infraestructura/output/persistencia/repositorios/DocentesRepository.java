@@ -12,7 +12,7 @@ public interface DocentesRepository extends CrudRepository<DocenteEntity, Intege
     @Query("SELECT count(*) FROM DocenteEntity d  WHERE d.idpersona=?1")
     Integer existeUsuarioPorId(Integer id);
 
-    @Query("SELECT count(*) FROM DocenteEntity d  WHERE d.numeroidentificacion=?1")
-    Integer existeUsuarioPorCodigo(String codigo);
+    @Query("SELECT count(*) FROM DocenteEntity d  WHERE d.correo=?1")
+    Integer existeUsuarioPorCorreo(String codigo);
 }
 

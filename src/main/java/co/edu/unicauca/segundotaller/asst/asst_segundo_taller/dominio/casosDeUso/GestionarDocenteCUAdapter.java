@@ -27,8 +27,8 @@ public class GestionarDocenteCUAdapter implements GestionarDocenteCUIntPort
             this.objDocenteFormateadorResultados
                     .retornarRespuestaErrorEntidadExiste("Error, se encuentra en el sistema un docente con el codigo");
         } else {
-            if(this.objGestionarDocenteGateway.existeUsuarioPorCodigo(objDocente.getNumeroIdentificacion())){
-                this.objDocenteFormateadorResultados.retornarRespuestaErrorReglaDeNegocio("Error, la identificacion ya existe");
+            if(this.objGestionarDocenteGateway.existeUsuarioPorCorreo(objDocente.getCorreo())){
+                this.objDocenteFormateadorResultados.retornarRespuestaErrorReglaDeNegocio("Error, el correo del docente ya existe");
             }
             
                 objDocenteCreado = this.objGestionarDocenteGateway.guardar(objDocente);

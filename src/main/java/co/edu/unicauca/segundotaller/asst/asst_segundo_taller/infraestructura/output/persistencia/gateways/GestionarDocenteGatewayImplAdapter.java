@@ -76,9 +76,9 @@ public class GestionarDocenteGatewayImplAdapter implements GestionarDocenteGatew
     }
 
     @Override
-    public boolean existeUsuarioPorCodigo(String id)
+    public boolean existeUsuarioPorCorreo(String correo)
     {
-        return this.objDocenteRepository.existeUsuarioPorCodigo(id) == 1;
+        return this.objDocenteRepository.existeUsuarioPorCorreo(correo) == 1;
     }
     
 }
