@@ -7,6 +7,7 @@ import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.aplicacion.input.G
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.dominio.modelos.Cuestionario;
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.input.controllerGestionarCuestionario.DTOPeticion.CuestionarioDTOPeticion;
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.input.controllerGestionarCuestionario.DTORespuesta.CuestionarioDTORespuesta;
+import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.input.controllerGestionarCuestionario.DTORespuesta.TipoPreguntaDTORespuesta;
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.input.controllerGestionarCuestionario.mappers.CuestionarioMapperInfraestructuraDominio;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -45,6 +46,14 @@ public class CuestionarioRestController {
     public ResponseEntity<List<CuestionarioDTORespuesta>> listar() {
         ResponseEntity<List<CuestionarioDTORespuesta>> objRespuesta = new ResponseEntity<List<CuestionarioDTORespuesta>>(
                 objMapeador.mappearDeCuestionariosARespuesta(this.objGestionarCuestionarioCUInt.listar()),
+                HttpStatus.OK);
+        return objRespuesta;
+    }
+
+    @GetMapping("/tipoPreguntas")
+    public ResponseEntity<List<TipoPreguntaDTORespuesta>> listarTipoPregunta() {
+        ResponseEntity<List<TipoPreguntaDTORespuesta>> objRespuesta = new ResponseEntity<List<TipoPreguntaDTORespuesta>>(
+                objMapeador.mappearDeTipoPreguntaARespuesta(this.objGestionarCuestionarioCUInt.listaTipoPreguntas()),
                 HttpStatus.OK);
         return objRespuesta;
     }

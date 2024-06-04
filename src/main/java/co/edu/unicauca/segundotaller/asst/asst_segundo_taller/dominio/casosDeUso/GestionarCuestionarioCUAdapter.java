@@ -4,6 +4,7 @@ import java.util.List;
 
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.aplicacion.input.GestionarCuestionarioCUIntPort;
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.dominio.modelos.Cuestionario;
+import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.dominio.modelos.TipoPregunta;
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.aplicacion.output.ExcepcionFormateadorResultadosIntPort;
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.aplicacion.output.GestionarCuestionarioGatewayIntPort;
 
@@ -33,6 +34,10 @@ public class GestionarCuestionarioCUAdapter implements GestionarCuestionarioCUIn
     public List<Cuestionario> listar() {
         List<Cuestionario> listaObtenida = objGestionarCuestionarioGateway.listar();
         return listaObtenida;
+    }
+    @Override
+    public List<TipoPregunta> listaTipoPreguntas() {
+        return this.objGestionarCuestionarioGateway.listaTipoPreguntas();
     }
   
     

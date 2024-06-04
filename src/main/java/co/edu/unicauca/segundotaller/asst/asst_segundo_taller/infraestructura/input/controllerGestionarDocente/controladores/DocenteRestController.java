@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.aplicacion.input.GestionarDocenteCUIntPort;
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.dominio.modelos.Docente;
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.input.controllerGestionarDocente.DTOPeticion.DocenteDTOPeticion;
+import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.input.controllerGestionarDocente.DTORespuesta.DepartamentoDTORespuesta;
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.input.controllerGestionarDocente.DTORespuesta.DocenteDTORespuesta;
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.input.controllerGestionarDocente.mappers.DocenteMapperInfraestructuraDominio;
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.input.controllerGestionarRespuesta.DTORespuesta.RespuestasDocenteDTORespuesta;
@@ -48,5 +49,14 @@ public class DocenteRestController
                 HttpStatus.OK);
         return objRespuesta;
     }
+    
+    @GetMapping("/docentes/deptos")
+    public ResponseEntity<List<DepartamentoDTORespuesta>> listarDeptos() {
+        ResponseEntity<List<DepartamentoDTORespuesta>> objRespuesta = new ResponseEntity<List<DepartamentoDTORespuesta>>(
+                objMapeador.mappearDeDeptoARespuesta(this.objGestionarDocenteCUInt.listarDepartamentos()),
+                HttpStatus.OK);
+        return objRespuesta;
+    }
+
     
 }

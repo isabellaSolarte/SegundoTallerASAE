@@ -27,6 +27,7 @@ public class GestionarDocenteGatewayImplAdapter implements GestionarDocenteGatew
     private final DocentesRepository objDocenteRepository;
     private final ModelMapper docenteModelMapper;
     private final DepartamentosRepository objDepartamentosRepository;
+    
 
     public GestionarDocenteGatewayImplAdapter(DocentesRepository objDocenteRepository, ModelMapper docModelMapper, DepartamentosRepository objDepartamentosRepository)
     {
@@ -79,6 +80,15 @@ public class GestionarDocenteGatewayImplAdapter implements GestionarDocenteGatew
     public boolean existeUsuarioPorCorreo(String correo)
     {
         return this.objDocenteRepository.existeUsuarioPorCorreo(correo) == 1;
+    }
+
+
+    @Override
+    public List<Departamento> listarDepartamentos() {
+        Iterable<DepartamentoEntity> lista = this.objDepartamentosRepository.findAll();
+        List<Departamento> listaObtenida = this.docenteModelMapper.map(lista, new TypeToken<List<Departamento>>() {
+        }.getType());
+        return listaObtenida;
     }
     
 }

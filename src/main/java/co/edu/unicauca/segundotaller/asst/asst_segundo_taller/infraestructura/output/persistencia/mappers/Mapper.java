@@ -26,8 +26,8 @@ public class Mapper {
             m.skip(CuestionarioDTORespuesta::setPreguntaEntities)).implicitMappings();
         TypeMap<PreguntaEntity, PreguntaDTORespuesta> mapa2 = objMapper.emptyTypeMap(PreguntaEntity.class, PreguntaDTORespuesta.class);
         mapa2.addMappings(m ->
-            m.skip(PreguntaDTORespuesta::setObjTipoPreguntaEntity)).implicitMappings(); 
-        */
+            m.skip(PreguntaDTORespuesta::setObjTipoPreguntaEntity)).implicitMappings(); */
+        
         return objMapper;
 
     } 

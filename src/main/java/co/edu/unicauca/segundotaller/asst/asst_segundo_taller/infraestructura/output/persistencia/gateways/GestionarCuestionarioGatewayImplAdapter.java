@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.aplicacion.output.GestionarCuestionarioGatewayIntPort;
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.dominio.modelos.Cuestionario;
+import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.dominio.modelos.TipoPregunta;
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.output.persistencia.entities.CuestionarioEntity;
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.output.persistencia.entities.PreguntaEntity;
 import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.output.persistencia.entities.TipoPreguntaEntity;
@@ -61,5 +62,14 @@ public class GestionarCuestionarioGatewayImplAdapter implements GestionarCuestio
         }.getType());
         return listaObtenida;
 	}
+
+    @Override
+    public List<TipoPregunta> listaTipoPreguntas() {
+        
+        Iterable<TipoPreguntaEntity> lista = this.tipoPreguntaRepository.findAll(); 
+        List<TipoPregunta> listaObtenida = this.cuestionarioModelMapper.map(lista, new org.modelmapper.TypeToken<List<TipoPregunta>>() {
+        }.getType());
+        return listaObtenida;
+    }
     
 }
