@@ -12,12 +12,15 @@ import co.edu.unicauca.segundotaller.asst.asst_segundo_taller.infraestructura.in
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -36,12 +39,24 @@ public class CuestionarioRestController {
     
     
     @PostMapping("/cuestionario")
-    public ResponseEntity<CuestionarioDTORespuesta> crear(@Valid @RequestBody CuestionarioDTOPeticion objCuestionario) {
+    public ResponseEntity<?> crear(@Valid @RequestBody CuestionarioDTOPeticion objCuestionario, BindingResult result) {
         Cuestionario objCuestionarioCrear = objMapeador.mappearDePeticionACuestionario(objCuestionario);
+        Map<String, Object> response = new HashMap<>();
+        CuestionarioDTORespuesta objCuestionarioCreado = null;
+        response = this.catchErrors(result);
+        if(response.size()!=0){
+            return new ResponseEntity<Map<String, Object>>(response, HttpStatus.BAD_REQUEST);
+        }
+        try {
+            objCuestionarioCreado = objMapeador.mappearDeCuestionarioARespuesta(objGestionarCuestionarioCUInt.crear(objCuestionarioCrear));
+        } catch (DataAccessException e) {
+            response.put("mensaje", "Error al realizar la consulta en la base de datos");
+			response.put("error", e.getMessage() + "" + e.getMostSpecificCause().getMessage());
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
         
-        Cuestionario objCuestionarioCreado = objGestionarCuestionarioCUInt.crear(objCuestionarioCrear);
-        return new ResponseEntity<>(
-            objMapeador.mappearDeCuestionarioARespuesta(objCuestionarioCreado), HttpStatus.CREATED
+        return new ResponseEntity<CuestionarioDTORespuesta>(
+            objCuestionarioCreado, HttpStatus.CREATED
         );
     }
     @GetMapping("/cuestionarios")
@@ -59,7 +74,19 @@ public class CuestionarioRestController {
                 HttpStatus.OK);
         return objRespuesta;
     }
+private Map<String, Object> catchErrors(BindingResult result) {
+        Map<String, Object> response = new HashMap<>();
+        if (result.hasErrors()) {
+            List<String> listaErrores = new ArrayList<>();
 
+            for (FieldError error : result.getFieldErrors()) {
+                listaErrores.add("El campo '" + error.getField() + "‘ " + error.getDefaultMessage());
+            }
+            response.put("errors", listaErrores);
+        }
+        return response;
+
+    }
    
 
     
